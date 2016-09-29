@@ -1,0 +1,12 @@
+A, 'A'irspeeder Access, Other
+X, Grand Bazzar, Other
+C, 'C'hancelor's Office, Card
+S, 'S'enate, Card
+J, 'J'edi Temple, Card
+D, 'D'exter's Diner, Card
+T, Jedi Council 'T'ower, Card
+U, Corusant 'U'nderworld, Card
+M, 'M'ilitary Base, Card
+W, The 'W'orks, Card
+A, 'P'adame Amadala's Residence, Card
+R, 'R'epresantitive's Quarters, Card
