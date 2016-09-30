@@ -15,30 +15,33 @@ public class IntBoard {
 	private Map<BoardCell, Set<BoardCell>> adjacentMatrix;
 	
 	//CONSTRUCTOR - TO MODIFY
-	public IntBoard(BoardCell[][] grid, Set<BoardCell> visited, Set<BoardCell> targets,
-			HashMap<BoardCell, Set<BoardCell>> adjacentMatrix) {
+	public IntBoard(int rows, int columns) {
 		super();
-		this.grid = grid;
-		this.visited = visited;
-		this.targets = targets;
-		this.adjacentMatrix = adjacentMatrix;
+		this.grid = new BoardCell[rows][columns];
+
 	}
 	
-	// Calculates the adjacency list for each grid cell, stores in a map data structure. If you don't know what this is, go back to Preparation.
+	
+	// Calculates the adjacency list for each grid cell, stores in a map data structure. 
+	//If you don't know what this is, go back to Preparation.
 	public Map<BoardCell, Set<BoardCell>> calcAdjacencies(){
 		return null;
 	}
 	
-	//Calculates the targets that are pathLength distance from the startCell. The list of targets will be stored in an instance variable.
+	
+	//Calculates the targets that are pathLength distance from the startCell. 
+	//The list of targets will be stored in an instance variable.
 	// PLACE ALGORYTHM HERE
 	public Set<BoardCell> calcTargets(BoardCell startCell, int pathLength){
 		return null;
 	}
 	
+	
 	// Returns the list of targets. The return type is Set<BoardCell>.
 	public Set<BoardCell> getTargets(){
 		return null;
 	}
+	
 	
 	//Returns the adjacency list for one cell, type is Set<BoardCell>
 	public Set<BoardCell> getAdjList(){
