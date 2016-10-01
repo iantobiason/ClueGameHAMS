@@ -28,6 +28,9 @@ public class IntBoard {
 		return null;
 	}
 	
+	public BoardCell getCell(int row, int column){
+		return grid[row][column];
+	}
 	
 	//Calculates the targets that are pathLength distance from the startCell. 
 	//The list of targets will be stored in an instance variable.
@@ -44,7 +47,7 @@ public class IntBoard {
 	
 	
 	//Returns the adjacency list for one cell, type is Set<BoardCell>
-	public Set<BoardCell> getAdjList(){
+	public Set<BoardCell> getAdjList(BoardCell cell){
 		return null;
 	}
 	
