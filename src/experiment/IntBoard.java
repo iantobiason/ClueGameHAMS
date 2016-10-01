@@ -51,5 +51,10 @@ public class IntBoard {
 		return null;
 	}
 	
-	
+	//Recursively returns any possible cells that a player can move to
+	private Set<BoardCell> findAllTargets(BoardCell startCell, int length){
+		Set<BoardCell> targets = new Set<BoardCell>();
+		Set<BoardCell> adjacents = getAdjList(startCell);
+		return targets;
+	}
 }
