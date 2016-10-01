@@ -1,6 +1,7 @@
 package experiment;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,6 +37,7 @@ public class IntBoard {
 	//The list of targets will be stored in an instance variable.
 	// PLACE ALGORYTHM HERE
 	public Set<BoardCell> calcTargets(BoardCell startCell, int pathLength){
+		
 		return null;
 	}
 	
@@ -52,9 +54,9 @@ public class IntBoard {
 	}
 	
 	//Recursively returns any possible cells that a player can move to
-	private Set<BoardCell> findAllTargets(BoardCell startCell, int length){
-		Set<BoardCell> targets = new Set<BoardCell>();
+	private BoardCell findAllTargets(BoardCell startCell, int length){
+		BoardCell target = new BoardCell(0,0);
 		Set<BoardCell> adjacents = getAdjList(startCell);
-		return targets;
+		return target;
 	}
 }
