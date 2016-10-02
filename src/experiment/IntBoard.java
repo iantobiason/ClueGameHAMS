@@ -54,13 +54,32 @@ public class IntBoard {
 	
 	//Returns the adjacency list for one cell, type is Set<BoardCell>
 	public Set<BoardCell> getAdjList(BoardCell cell){
-		
-		return null;
+		Set<BoardCell> adj = new HashSet<BoardCell>();
+		BoardCell left = new BoardCell(cell.getRow(), cell.getColumn()-1);
+		BoardCell top = new BoardCell(cell.getRow()-1, cell.getColumn());
+		BoardCell right = new BoardCell(cell.getRow(), cell.getColumn()+1);
+		BoardCell bottom = new BoardCell(cell.getRow()+1, cell.getColumn());
+		adj.add(left);
+		adj.add(top);
+		adj.add(right);
+		adj.add(bottom);
+		if (cell.getColumn() == 0){
+			adj.remove(left);
+		}
+		if (cell.getRow() == 0){
+			adj.remove(top);
+		}
+		if (cell.getColumn() == 3){
+			adj.remove(right);
+		}
+		if (cell.getRow() == 3){
+			adj.remove(bottom);
+		}
+		return adj;
 	}
 	
 	//Recursively returns any possible cells that a player can move to
 	private void findAllTargets(BoardCell startCell, int length){
-		BoardCell target = new BoardCell(0,0);
 		Set<BoardCell> adjacents = getAdjList(startCell);
 		for (BoardCell s : adjacents){
 			if (visited.contains(s)){
