@@ -37,26 +37,43 @@ public class IntBoard {
 	//The list of targets will be stored in an instance variable.
 	// PLACE ALGORYTHM HERE
 	public Set<BoardCell> calcTargets(BoardCell startCell, int pathLength){
-		
+		visited.add(startCell);
+		targets.clear();
+		for (BoardCell s : getAdjList(startCell)){
+			findAllTargets(s, pathLength);
+		}
 		return null;
 	}
 	
 	
 	// Returns the list of targets. The return type is Set<BoardCell>.
 	public Set<BoardCell> getTargets(){
-		return null;
+		return targets;
 	}
 	
 	
 	//Returns the adjacency list for one cell, type is Set<BoardCell>
 	public Set<BoardCell> getAdjList(BoardCell cell){
+		
 		return null;
 	}
 	
 	//Recursively returns any possible cells that a player can move to
-	private BoardCell findAllTargets(BoardCell startCell, int length){
+	private void findAllTargets(BoardCell startCell, int length){
 		BoardCell target = new BoardCell(0,0);
 		Set<BoardCell> adjacents = getAdjList(startCell);
-		return target;
+		for (BoardCell s : adjacents){
+			if (visited.contains(s)){
+				continue;
+			}
+			visited.add(s);
+			if (length == 1){
+				targets.add(s);
+			}
+			else {
+				findAllTargets(s, length - 1);
+			}
+			visited.remove(s);
+		}
 	}
 }
