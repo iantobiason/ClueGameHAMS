@@ -10,16 +10,21 @@ public class IntBoard {
 	private BoardCell[][] grid;
 	
 	//Set of Boardcells for visited and Targets so that...
-	private Set<BoardCell> visited;
-	private Set<BoardCell> targets;
+	private Set<BoardCell> visited = new HashSet<BoardCell>(0);
+	private Set<BoardCell> targets = new HashSet<BoardCell>(0);
 	// Store the adjacency lists in a HashMap of Key: BoardCell, and Value: Set<BoardCell>
-	private Map<BoardCell, Set<BoardCell>> adjacentMatrix;
+	private Map<BoardCell, Set<BoardCell>> adjacentMatrix = new HashMap<BoardCell, Set<BoardCell>>(0);
 	
 	//CONSTRUCTOR - TO MODIFY
 	public IntBoard(int rows, int columns) {
 		super();
 		this.grid = new BoardCell[rows][columns];
-
+		
+		for (int i = 0; i < rows; i ++){
+			for (int j = 0; j < columns; j++){
+				grid[i][j] = new BoardCell(i,j);
+			}
+		}
 	}
 	
 	
@@ -36,13 +41,12 @@ public class IntBoard {
 	//Calculates the targets that are pathLength distance from the startCell. 
 	//The list of targets will be stored in an instance variable.
 	// PLACE ALGORYTHM HERE
-	public Set<BoardCell> calcTargets(BoardCell startCell, int pathLength){
+	public void calcTargets(BoardCell startCell, int pathLength){
 		visited.add(startCell);
 		targets.clear();
-		for (BoardCell s : getAdjList(startCell)){
+		for (BoardCell s : getAdjList(startCell, this)){
 			findAllTargets(s, pathLength);
 		}
-		return null;
 	}
 	
 	
@@ -53,34 +57,65 @@ public class IntBoard {
 	
 	
 	//Returns the adjacency list for one cell, type is Set<BoardCell>
-	public Set<BoardCell> getAdjList(BoardCell cell){
-		Set<BoardCell> adj = new HashSet<BoardCell>();
-		BoardCell left = new BoardCell(cell.getRow(), cell.getColumn()-1);
-		BoardCell top = new BoardCell(cell.getRow()-1, cell.getColumn());
-		BoardCell right = new BoardCell(cell.getRow(), cell.getColumn()+1);
-		BoardCell bottom = new BoardCell(cell.getRow()+1, cell.getColumn());
-		adj.add(left);
-		adj.add(top);
-		adj.add(right);
-		adj.add(bottom);
-		if (cell.getColumn() == 0){
-			adj.remove(left);
+	public Set<BoardCell> getAdjList(BoardCell cell, IntBoard board){
+		Set<BoardCell> adj = new HashSet<BoardCell>(4);
+		int x = cell.getRow();
+		int y = cell.getColumn();
+		if (x == 0){
+			if (y == 0){
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+			}
+			else if (y == 3){
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+			}
+			else {
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+			}
 		}
-		if (cell.getRow() == 0){
-			adj.remove(top);
+		else if (x == 3){
+			if (y == 0){
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x-1, y));
+			}
+			else if (y == 3){
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
+			else {
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
 		}
-		if (cell.getColumn() == 3){
-			adj.remove(right);
+		else {
+			if (y == 0){
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x-1, y));
+			}
+			else if (y == 3){
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
+			else {
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
 		}
-		if (cell.getRow() == 3){
-			adj.remove(bottom);
-		}
+		
 		return adj;
 	}
 	
 	//Recursively returns any possible cells that a player can move to
 	private void findAllTargets(BoardCell startCell, int length){
-		Set<BoardCell> adjacents = getAdjList(startCell);
+		Set<BoardCell> adjacents = getAdjList(startCell, this);
 		for (BoardCell s : adjacents){
 			if (visited.contains(s)){
 				continue;
