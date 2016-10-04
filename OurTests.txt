@@ -1,0 +1,7 @@
+Changed test rooms to have correct names
+Added the correct number of doors to 19
+For door directions changed to req quarters right, sendate down, chanclelors left padme up 
+and also two false doorways at:
+X(bazzar) @ 10,10
+J(jedi temple) @ 18, 2
+Checked for correct initals in each of the rooms and also at the airspeeder airway
