@@ -95,10 +95,11 @@ public class IntBoardTests {
 	public void testTargets00_3()
 	{
 		BoardCell cell = board.getCell(0, 0);
+		System.out.println(cell.getRow() + ", " + cell.getColumn() + ":");
 		board.calcTargets(cell, 3);
 		Set<BoardCell> targets = board.getTargets();
 		for (BoardCell s : targets){
-			System.out.println(s.toString());
+			System.out.println(s.getRow() + ", " + s.getColumn());
 		}
 		System.out.println("");
 		assertEquals(6, targets.size());
@@ -110,18 +111,19 @@ public class IntBoardTests {
 		assertTrue(targets.contains(board.getCell(0, 3)));
 	}
 	@Test
-	public void testTargets33_6()
+	public void testTargets02_4()
 	{
-		BoardCell cell = board.getCell(3, 3);
-		board.calcTargets(cell, 6);
+		BoardCell cell = board.getCell(0, 2);
+		System.out.println(cell.getRow() + ", " + cell.getColumn() + ":");
+		board.calcTargets(cell, 4);
 		Set<BoardCell> targets = board.getTargets();
 		for (BoardCell s : targets){
-			System.out.println(s.toString());
+			System.out.println(s.getRow() + ", " + s.getColumn());
 		}
 		System.out.println("");
-		assertEquals(8, targets.size());
+		assertEquals(7, targets.size());
 		assertTrue(targets.contains(board.getCell(0, 0)));
-		assertTrue(targets.contains(board.getCell(0, 2)));
+		//assertTrue(targets.contains(board.getCell(0, 2)));
 		assertTrue(targets.contains(board.getCell(1, 1)));
 		assertTrue(targets.contains(board.getCell(1, 3)));
 		assertTrue(targets.contains(board.getCell(2, 0)));
@@ -133,10 +135,11 @@ public class IntBoardTests {
 	public void testTargets11_1()
 	{
 		BoardCell cell = board.getCell(1, 1);
+		System.out.println(cell.getRow() + ", " + cell.getColumn() + ":");
 		board.calcTargets(cell, 1);
 		Set<BoardCell> targets = board.getTargets();
 		for (BoardCell s : targets){
-			System.out.println(s.toString());
+			System.out.println(s.getRow() + ", " + s.getColumn());
 		}
 		System.out.println("");
 		assertEquals(4, targets.size());
@@ -146,51 +149,14 @@ public class IntBoardTests {
 		assertTrue(targets.contains(board.getCell(2, 1)));
 	}
 	@Test
-	public void testTargets21_2()
-	{
-		BoardCell cell = board.getCell(2, 1);
-		board.calcTargets(cell, 2);
-		Set<BoardCell> targets = board.getTargets();
-		for (BoardCell s : targets){
-			System.out.println(s.toString());
-		}
-		System.out.println("");
-		assertEquals(6, targets.size());
-		assertTrue(targets.contains(board.getCell(0, 1)));
-		assertTrue(targets.contains(board.getCell(1, 0)));
-		assertTrue(targets.contains(board.getCell(1, 2)));
-		assertTrue(targets.contains(board.getCell(2, 3)));
-		assertTrue(targets.contains(board.getCell(3, 0)));
-		assertTrue(targets.contains(board.getCell(3, 2)));
-	}
-	@Test
-	public void testTargets02_4()
-	{
-		BoardCell cell = board.getCell(0, 2);
-		board.calcTargets(cell, 4);
-		Set<BoardCell> targets = board.getTargets();
-		for (BoardCell s : targets){
-			System.out.println(s.toString());
-		}
-		System.out.println("");
-		assertEquals(8, targets.size());
-		assertTrue(targets.contains(board.getCell(0, 0)));
-		assertTrue(targets.contains(board.getCell(0, 2)));
-		assertTrue(targets.contains(board.getCell(1, 1)));
-		assertTrue(targets.contains(board.getCell(1, 3)));
-		assertTrue(targets.contains(board.getCell(2, 0)));
-		assertTrue(targets.contains(board.getCell(2, 2)));
-		assertTrue(targets.contains(board.getCell(3, 1)));
-		assertTrue(targets.contains(board.getCell(3, 3)));
-	}
-	@Test
 	public void testTargets13_5()
 	{
 		BoardCell cell = board.getCell(1, 3);
+		System.out.println(cell.getRow() + ", " + cell.getColumn() + ":");
 		board.calcTargets(cell, 5);
 		Set<BoardCell> targets = board.getTargets();
 		for (BoardCell s : targets){
-			System.out.println(s.toString());
+			System.out.println(s.getRow() + ", " + s.getColumn());
 		}
 		System.out.println("");
 		assertEquals(8, targets.size());
@@ -202,6 +168,46 @@ public class IntBoardTests {
 		assertTrue(targets.contains(board.getCell(2, 3)));
 		assertTrue(targets.contains(board.getCell(3, 0)));
 		assertTrue(targets.contains(board.getCell(3, 2)));
+	}
+	@Test
+	public void testTargets21_2()
+	{
+		BoardCell cell = board.getCell(2, 1);
+		System.out.println(cell.getRow() + ", " + cell.getColumn() + ":");
+		board.calcTargets(cell, 2);
+		Set<BoardCell> targets = board.getTargets();
+		for (BoardCell s : targets){
+			System.out.println(s.getRow() + ", " + s.getColumn());
+		}
+		System.out.println("");
+		assertEquals(6, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 3)));
+		assertTrue(targets.contains(board.getCell(3, 0)));
+		assertTrue(targets.contains(board.getCell(3, 2)));
+	}
+	@Test
+	public void testTargets33_6()
+	{
+		BoardCell cell = board.getCell(3, 3);
+		System.out.println(cell.getRow() + ", " + cell.getColumn() + ":");
+		board.calcTargets(cell, 6);
+		Set<BoardCell> targets = board.getTargets();
+		for (BoardCell s : targets){
+			System.out.println(s.getRow() + ", " + s.getColumn());
+		}
+		System.out.println("");
+		assertEquals(7, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 0)));
+		assertTrue(targets.contains(board.getCell(0, 2)));
+		assertTrue(targets.contains(board.getCell(1, 1)));
+		assertTrue(targets.contains(board.getCell(1, 3)));
+		assertTrue(targets.contains(board.getCell(2, 0)));
+		assertTrue(targets.contains(board.getCell(2, 2)));
+		assertTrue(targets.contains(board.getCell(3, 1)));
+		//assertTrue(targets.contains(board.getCell(3, 3)));
 	}
 	
 }

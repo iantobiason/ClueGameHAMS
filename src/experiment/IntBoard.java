@@ -44,8 +44,15 @@ public class IntBoard {
 	public void calcTargets(BoardCell startCell, int pathLength){
 		visited.add(startCell);
 		targets.clear();
-		for (BoardCell s : getAdjList(startCell, this)){
-			findAllTargets(s, pathLength);
+		if (pathLength == 1){
+			for (BoardCell s : getAdjList(startCell, this)){
+				targets.add(s);
+			}
+		}
+		else{
+			for (BoardCell s : getAdjList(startCell, this)){
+				findAllTargets(s, pathLength-1);
+			}
 		}
 	}
 	
@@ -117,17 +124,25 @@ public class IntBoard {
 	private void findAllTargets(BoardCell startCell, int length){
 		Set<BoardCell> adjacents = getAdjList(startCell, this);
 		for (BoardCell s : adjacents){
-			if (visited.contains(s)){
-				continue;
+			if (!(visited.contains(s))){
+				visited.add(s);
+				if (length <= 1){
+					targets.add(s);
+				}
+				else {
+					findAllTargets(s, length-1);
+				}
+				visited.remove(s);
 			}
-			visited.add(s);
-			if (length == 1){
+			/*visited.add(s);
+			if (length <= 1){
 				targets.add(s);
 			}
 			else {
-				findAllTargets(s, length - 1);
+				findAllTargets(s, length-1);
 			}
 			visited.remove(s);
+			*/
 		}
 	}
 }
