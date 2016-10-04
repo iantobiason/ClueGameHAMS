@@ -54,7 +54,7 @@ public class CR_FileInitTests {
 		assertEquals("Corusant Underworld", legend.get('U'));
 		assertEquals("Military Base", legend.get('M'));
 		assertEquals("The Works", legend.get('W'));
-		assertEquals("Padme Amadala Residence", legend.get('A'));
+		assertEquals("Padme Amadala Residence", legend.get('P'));
 		assertEquals("Represantitive Quarters", legend.get('R'));
 	}
 	
