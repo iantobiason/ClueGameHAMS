@@ -3,7 +3,6 @@ X, Grand Bazzar, Other
 C, Chancelor Office, Card
 S, Senate, Card
 J, Jedi Temple, Card
-D, Dexters Diner, Card
 T, Jedi Council Tower, Card
 U, Corusant Underworld, Card
 M, Military Base, Card
