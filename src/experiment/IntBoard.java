@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import clueGame.BoardCell;
+
 public class IntBoard {
 	// Double array grid of type BoardCell (will have row and column ints for each point)
 	private BoardCell[][] grid;
