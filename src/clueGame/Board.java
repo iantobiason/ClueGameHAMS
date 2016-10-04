@@ -50,13 +50,23 @@ public class Board {
 	public void calcTargets(BoardCell cell, int pathLength){
 		
 	}
-	/*
-	private Board(int numRows, int numColumns, int MAX_BOARD_SIZE) {
-		super();
-		this.numRows = numRows;
-		this.numColumns = numColumns;
-		this.MAX_BOARD_SIZE = MAX_BOARD_SIZE;
-	}
-	*/
 	
+	public void setConfigFiles(String input, String legend){
+		
+	}
+	
+	public Map<Character, String> getLegend(){
+		return rooms;
+	}
+	public int getNumRows(){
+		return numRows;
+	}
+	
+	public int getNumColumns(){
+		return numColumns;
+	}
+	
+	public BoardCell getCellAt(int r, int c){
+		return board[r][c];
+	}
 }

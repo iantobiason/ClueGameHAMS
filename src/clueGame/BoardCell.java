@@ -4,6 +4,7 @@ public class BoardCell {
 		private int row;
 		private int column;
 		private char initial;
+		private DoorDirection direction;
 		
 		public BoardCell(int row, int column) {
 			super();
@@ -33,6 +34,14 @@ public class BoardCell {
 		
 		public boolean isDoorway(){
 			return true;
+		}
+		
+		public DoorDirection getDoorDirection(){
+			return direction;
+		}
+		
+		public char getInitial(){
+			return initial;
 		}
 
 }
