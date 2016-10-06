@@ -35,7 +35,14 @@ public class Board {
 	}
 	
 	public void initialize() throws FileNotFoundException{
-		Scanner in = new Scanner(new FileReader(roomConfigFile));
+		Scanner legendRead = new Scanner(new FileReader(roomConfigFile));
+		legendRead.useDelimiter(", ");
+		String symbol, name, type;
+		while (legendRead.hasNext()){
+			symbol = legendRead.next();
+			name = legendRead.next();
+			type = legendRead.next();
+		}
 	}
 	
 	public void loadRoomFile(){
