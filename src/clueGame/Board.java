@@ -1,8 +1,11 @@
 package clueGame;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Board {
@@ -31,8 +34,8 @@ public class Board {
 		return theInstance;
 	}
 	
-	public void initialize(){
-		
+	public void initialize() throws FileNotFoundException{
+		Scanner in = new Scanner(new FileReader(roomConfigFile));
 	}
 	
 	public void loadRoomFile(){
@@ -52,7 +55,8 @@ public class Board {
 	}
 	
 	public void setConfigFiles(String input, String legend){
-		
+		boardConfigFile = input;
+		roomConfigFile = legend;
 	}
 	
 	public Map<Character, String> getLegend(){
