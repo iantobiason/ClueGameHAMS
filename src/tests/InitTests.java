@@ -8,12 +8,14 @@ package tests;
 // Assert.assertEquals
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import clueGame.BadConfigFormatException;
 import clueGame.Board;
 import clueGame.BoardCell;
 import clueGame.DoorDirection;
@@ -34,7 +36,7 @@ public class InitTests {
 		board = Board.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout.csv", "Legend.txt");		
-		// Initialize will load BOTH config files 
+		// Initialize will load BOTH config files
 		board.initialize();
 	}
 	@Test
@@ -103,8 +105,10 @@ public class InitTests {
 			for (int row=0; row<board.getNumRows(); row++)
 				for (int col=0; col<board.getNumColumns(); col++) {
 					BoardCell cell = board.getCellAt(row, col);
-					if (cell.isDoorway())
+					System.out.println(cell.getInitial());
+					if (cell.isDoorway()){
 						numDoors++;
+					}
 				}
 			Assert.assertEquals(19, numDoors);
 		}

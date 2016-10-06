@@ -7,5 +7,5 @@ T, Jedi Council Tower, Card
 U, Corusant Underworld, Card
 M, Military Base, Card
 W, The Works, Card
-A, Padame Amadala Residence, Card
+P, Padme Amadala Residence, Card
 R, Represantitive Quarters, Card
