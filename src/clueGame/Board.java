@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import experiment.IntBoard;
 import tests.InitTests;
 
 public class Board {
@@ -26,6 +27,10 @@ public class Board {
 	private Map<BoardCell, Set<BoardCell>> adjMatrix = new HashMap<BoardCell, Set<BoardCell>>();
 	
 	private Set<BoardCell> targets = new HashSet<BoardCell>();
+	
+	private Set<BoardCell> visited = new HashSet<BoardCell>();
+	
+	private Set<BoardCell> adj= new HashSet<BoardCell>();
 	
 	private String boardConfigFile;
 	
@@ -150,17 +155,109 @@ public class Board {
 		}
 	}
 	
-	public void calcAdjacencies(){
-		
+	public void calcTargets(int row, int column, int pathLength){
+		visited.add(board[row][column]);
+		targets.clear();
+		if (pathLength == 1){
+			for (BoardCell s : getAdjList(row, column)){
+				targets.add(s);
+			}
+		}
+		else{
+			for (BoardCell s : getAdjList(row, column)){
+				findAllTargets(s, pathLength-1);
+			}
+		}
 	}
 	
-	public void calcTargets(BoardCell cell, int pathLength){
+	private void findAllTargets(BoardCell startCell, int length){
+		Set<BoardCell> adjacents = getAdjList(startCell.getRow(), startCell.getColumn());
+		for (BoardCell s : adjacents){
+			if (!(visited.contains(s))){
+				visited.add(s);
+				if (length <= 1){
+					targets.add(s);
+				}
+				else {
+					findAllTargets(s, length-1);
+				}
+				visited.remove(s);
+			}
+		}
+	}
+	
+	//Returns the adjacency list for one cell, type is Set<BoardCell>
+		public void calcAdjacencies(BoardCell cell, IntBoard board){
+			//Set<BoardCell> adj = new HashSet<BoardCell>(4);
+			int x = cell.getRow();
+			int y = cell.getColumn();	
+			//return adj;
+		}
+		
+	private void bufferCalcAdj(BoardCell cell){
+		adj.clear();
+		int x = cell.getRow();
+		int y = cell.getColumn();
+		if (x == 0){
+			if (y == 0){
+				adj.add(board[x][y+1]);
+				adj.add(board.getCell(x+1, y));
+			}
+			else if (y == 3){
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+			}
+			else {
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+			}
+		}
+		else if (x == 3){
+			if (y == 0){
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x-1, y));
+			}
+			else if (y == 3){
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
+			else {
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
+		}
+		else {
+			if (y == 0){
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x-1, y));
+			}
+			else if (y == 3){
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
+			else {
+				adj.add(board.getCell(x, y+1));
+				adj.add(board.getCell(x+1, y));
+				adj.add(board.getCell(x, y-1));
+				adj.add(board.getCell(x-1, y));
+			}
+		}
 		
 	}
+		
+	public Set<BoardCell> getAdjList (int row, int column){
+		return adjMatrix.get(new BoardCell(row, column)); 
+	}
+	
 	
 	public void setConfigFiles(String input, String legend){
 		boardConfigFile = input;
 		roomConfigFile = legend;
+		
 	}
 	
 	public Map<Character, String> getLegend(){
