@@ -248,6 +248,10 @@ public class Board {
 		}
 		
 	}
+	
+	public Set<BoardCell> getTargets(){
+		return targets;
+	}
 		
 	public Set<BoardCell> getAdjList (int row, int column){
 		return adjMatrix.get(new BoardCell(row, column)); 
