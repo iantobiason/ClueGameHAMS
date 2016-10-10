@@ -61,5 +61,12 @@ public class BoardCell {
 		public void setInitial(char c){
 			this.initial = c;
 		}
+		@Override
+		public String toString() {
+			return "BoardCell [row=" + row + ", column=" + column + ", initial=" + initial + ", direction=" + direction
+					+ "]";
+		}
+		
+		
 
 }

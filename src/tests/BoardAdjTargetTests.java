@@ -19,11 +19,12 @@ public class BoardAdjTargetTests {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
 	private static Board board;
+	
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance and initialize it		
 		board = Board.getInstance();
-		board.setConfigFiles("CR_ClueLayout.csv", "CR_ClueLegend.txt");		
+		board.setConfigFiles("ClueLayout.csv", "Legend.txt");		
 		board.initialize();
 	}
 
@@ -83,6 +84,8 @@ public class BoardAdjTargetTests {
 	
 	// Tests of all the targets
 	// These are LIGHT BLUE on the planning spreadsheet
+	
+
 	@Test
 	public void testTargets() {
 		// Targets along walkways at distance 1
@@ -118,7 +121,7 @@ public class BoardAdjTargetTests {
 		// Targets along walkways at distance 5
 		board.calcTargets(11, 16, 5);
 		targets= board.getTargets();
-		assertEquals(13, targets.size());
+		assertEquals(14, targets.size());
 		assertTrue(targets.contains(board.getCellAt(6, 16)));
 		assertTrue(targets.contains(board.getCellAt(8, 16)));	
 		assertTrue(targets.contains(board.getCellAt(10, 16)));
@@ -132,29 +135,32 @@ public class BoardAdjTargetTests {
 		assertTrue(targets.contains(board.getCellAt(15, 15)));
 		assertTrue(targets.contains(board.getCellAt(13, 13)));
 		assertTrue(targets.contains(board.getCellAt(14, 14)));
+		assertTrue(targets.contains(board.getCellAt(15, 17)));
 		
 		
 		//
 		// Target that allows the user to enter a room, door at (16, 3)
 		board.calcTargets(21, 4, 6);
 		targets= board.getTargets();
-		assertEquals(8, targets.size());
+		assertEquals(7, targets.size());
 		assertTrue(targets.contains(board.getCellAt(20, 5)));
 		assertTrue(targets.contains(board.getCellAt(18, 5)));	
 		assertTrue(targets.contains(board.getCellAt(16, 5)));
 		assertTrue(targets.contains(board.getCellAt(15, 4)));
 		assertTrue(targets.contains(board.getCellAt(17, 4)));
 		assertTrue(targets.contains(board.getCellAt(19, 4)));
-		assertTrue(targets.contains(board.getCellAt(21, 4)));
 		assertTrue(targets.contains(board.getCellAt(16, 3)));
 		
 		// Target that allows the user to enter a room, doors at (21, 10) and (21, 12)
-		board.calcTargets(21, 11, 1);
+		board.calcTargets(21, 11, 3);
 		targets= board.getTargets();
+		for (BoardCell b : targets){
+			System.out.println(b.toString());
+		}
 		assertEquals(3, targets.size());
 		assertTrue(targets.contains(board.getCellAt(21, 10)));
 		assertTrue(targets.contains(board.getCellAt(21, 12)));	
-		assertTrue(targets.contains(board.getCellAt(20, 11)));	
+		assertTrue(targets.contains(board.getCellAt(18, 11)));	
 		
 		// Targets calculated when leaving a room, move 3 spaces
 		board.calcTargets(4, 9, 3);
@@ -173,5 +179,4 @@ public class BoardAdjTargetTests {
 		assertEquals(1, targets.size());
 		assertTrue(targets.contains(board.getCellAt(5, 16)));	
 	}
-
 }
