@@ -1,4 +1,4 @@
-A, Airspeeder Access, Other
+W, Airspeeder Access, Other
 X, Grand Bazzar, Other
 C, Chancelor Office, Card
 S, Senate, Card
@@ -6,6 +6,6 @@ J, Jedi Temple, Card
 T, Jedi Council Tower, Card
 U, Corusant Underworld, Card
 M, Military Base, Card
-W, The Works, Card
+O, The Works, Card
 P, Padme Amadala Residence, Card
 R, Represantitive Quarters, Card

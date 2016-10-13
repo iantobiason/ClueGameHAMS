@@ -54,7 +54,7 @@ public class InitTests {
 		assertEquals("Jedi Council Tower", legend.get('T'));
 		assertEquals("Corusant Underworld", legend.get('U'));
 		assertEquals("Military Base", legend.get('M'));
-		assertEquals("The Works", legend.get('W'));
+		assertEquals("The Works", legend.get('O'));
 		assertEquals("Padme Amadala Residence", legend.get('P'));
 		assertEquals("Represantitive Quarters", legend.get('R'));
 	}
@@ -124,12 +124,12 @@ public class InitTests {
 			assertEquals('T', board.getCellAt(11, 3).getInitial());
 			assertEquals('U', board.getCellAt(4, 2).getInitial());
 			assertEquals('M', board.getCellAt(1, 18).getInitial());
-			assertEquals('W', board.getCellAt(2, 7).getInitial());
+			assertEquals('O', board.getCellAt(2, 7).getInitial());
 			assertEquals('P', board.getCellAt(18, 8).getInitial());
 			assertEquals('R', board.getCellAt(18, 14).getInitial());
 
 			// Test Airspeeder Access
-			assertEquals('A', board.getCellAt(9, 5).getInitial());
+			assertEquals('W', board.getCellAt(9, 5).getInitial());
 			// Not testing a closet because we dont have one.
 		}
 		

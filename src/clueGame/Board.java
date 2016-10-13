@@ -14,7 +14,7 @@ public class Board {
 	private int numRows = InitTests.NUM_ROWS;
 	private int numColumns = InitTests.NUM_COLUMNS;
 	public static final int MAX_BOARD_SIZE = 50;
-	public static final char WALKWAY_CHAR = 'A'; // Initial for walkway BoardCell's, use 'A' for our board
+	//public static final char WALKWAY_CHAR = 'W'; // Initial for walkway BoardCell's, use 'A' for our board
 	
 	private static Board theInstance = new Board();
 	
@@ -284,13 +284,13 @@ public class Board {
 						case NONE:
 							break;
 					}
-				} else if (temp.getInitial() != WALKWAY_CHAR){
+				} else if (temp.getInitial() != 'W'){
 					adjMatrix.put(temp, new HashSet<BoardCell>(0));
 				} else{
 					Set<BoardCell> tempAdj = bufferCalcAdj(temp);
 					Set<BoardCell> newTempAdj = new HashSet<BoardCell>();
 					for (BoardCell b : tempAdj){
-						if (b.getInitial() == WALKWAY_CHAR){
+						if (b.getInitial() == 'W'){
 							newTempAdj.add(b);
 						}
 						else if (b.getDoorDirection() == DoorDirection.UP && b.getRow() == temp.getRow()+1){
