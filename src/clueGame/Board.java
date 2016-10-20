@@ -10,44 +10,52 @@ import java.util.Set;
 import tests.InitTests;
 
 public class Board {
-	
+
 	private int numRows = InitTests.NUM_ROWS;
 	private int numColumns = InitTests.NUM_COLUMNS;
 	public static final int MAX_BOARD_SIZE = 50;
 	//public static final char WALKWAY_CHAR = 'W'; // Initial for walkway BoardCell's, use 'A' for our board
-	
+
 	private static Board theInstance = new Board();
-	
+
 	private BoardCell[][] board = new BoardCell[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
-	
+
 	private Map<Character, String> rooms = new HashMap<Character, String>();
-	
+
 	private Map<BoardCell, Set<BoardCell>> adjMatrix = new HashMap<BoardCell, Set<BoardCell>>();
-	
+
 	private Set<BoardCell> targets = new HashSet<BoardCell>();
-	
+
 	private Set<BoardCell> visited = new HashSet<BoardCell>();
-	
+
 	private String boardConfigFile;
-	
+
 	private String roomConfigFile;
 	
-	private Board() {}
+	private Set<Card> weapons;
 	
+	private Set<Card> people;
+	
+	private Map<String,Player> computerPlayers;
+
+	private Board() {}
+
 	public static Board getInstance(){
 		return theInstance;
 	}
-	
+
 	public void initialize() {
 		try {
 			loadRoomFile();
 			loadBoardConfig();
+			loadPeople();
+			loadWeapons();
 		} catch (BadConfigFormatException e) {
 			e.printStackTrace();
 		}
 		calcAdjacencies();
 	}
-	
+
 	public void loadRoomFile() throws BadConfigFormatException{
 		Scanner legendRead = null;
 		try {
@@ -80,10 +88,10 @@ public class Board {
 			}
 		}
 	}
-	
+
 	public void loadBoardConfig() throws BadConfigFormatException {
 		Scanner boardRead = null;
-		
+
 		try {
 			boardRead = new Scanner(new FileReader(boardConfigFile));
 		}
@@ -150,23 +158,26 @@ public class Board {
 			}
 		}
 	}
-	
-	public void loadConfigFiles(){
 
-	}
-	
-	public void selectAnswer(){
+	public void loadPeople(){
 		
 	}
-	
+	public void loadWeapons(){
+
+	}
+
+	public void selectAnswer(){
+
+	}
+
 	public Card handleSugguestion(){
 		return null;
 	}
-	
+
 	public boolean checkAccusation(){
 		return false;
 	}
-	
+
 	public void calcTargets(int row, int column, int pathLength){
 		visited.add(board[row][column]);
 		targets.clear();
@@ -191,13 +202,13 @@ public class Board {
 			}
 		}
 	}
-	
+
 	private void findAllTargets(int row, int column, int length){
 		visited.add(board[row][column]);
 		Set<BoardCell> adjacents = getAdjList(row, column);
-//		for (BoardCell b : adjacents){
-//			System.out.println(b.toString());
-//		}
+		//		for (BoardCell b : adjacents){
+		//			System.out.println(b.toString());
+		//		}
 		for (BoardCell s : adjacents){
 			if (!(visited.contains(s))){
 				visited.add(s);
@@ -212,8 +223,8 @@ public class Board {
 		}
 		visited.remove(board[row][column]);
 	}
-	
-	
+
+
 	// Checks to make sure that the boardcell passed in is not on the edge of the board, it does this by
 	// Creating a set(boardcells) of adjacent cells which are not outside the board
 	private Set<BoardCell> bufferCalcAdj(BoardCell cell){
@@ -271,7 +282,7 @@ public class Board {
 		return bufferAdj;
 	}
 
-	
+
 	//Returns the adjacency list for one cell, type is Set<BoardCell>
 	public void calcAdjacencies(){
 		for ( int row = 0; row < numRows; row++){
@@ -281,24 +292,24 @@ public class Board {
 					Set<BoardCell> tempAdj = new HashSet<BoardCell>(1);
 					// case statement returns for up down left right
 					switch (temp.getDoorDirection()){
-						case UP:
-							tempAdj.add(board[row-1][column]);
-							adjMatrix.put(temp, tempAdj);
-							break;
-						case DOWN:
-							tempAdj.add(board[row+1][column]);
-							adjMatrix.put(temp, tempAdj);
-							break;
-						case LEFT:
-							tempAdj.add(board[row][column-1]);
-							adjMatrix.put(temp, tempAdj);
-							break;
-						case RIGHT:
-							tempAdj.add(board[row][column+1]);
-							adjMatrix.put(temp, tempAdj);
-							break;
-						case NONE:
-							break;
+					case UP:
+						tempAdj.add(board[row-1][column]);
+						adjMatrix.put(temp, tempAdj);
+						break;
+					case DOWN:
+						tempAdj.add(board[row+1][column]);
+						adjMatrix.put(temp, tempAdj);
+						break;
+					case LEFT:
+						tempAdj.add(board[row][column-1]);
+						adjMatrix.put(temp, tempAdj);
+						break;
+					case RIGHT:
+						tempAdj.add(board[row][column+1]);
+						adjMatrix.put(temp, tempAdj);
+						break;
+					case NONE:
+						break;
 					}
 				} else if (temp.getInitial() != 'W'){
 					adjMatrix.put(temp, new HashSet<BoardCell>(0));
@@ -327,34 +338,39 @@ public class Board {
 			}
 		}
 	}
-	
+
 	public Set<BoardCell> getTargets(){
 		return targets;
 	}
-		
+
 	public Set<BoardCell> getAdjList (int row, int column){
 		return adjMatrix.get(board[row][column]); 
 	}
-	
-	
+
+
 	public void setConfigFiles(String input, String legend){
 		boardConfigFile = input;
 		roomConfigFile = legend;
-		
+
 	}
-	
+
 	public Map<Character, String> getLegend(){
 		return rooms;
 	}
 	public int getNumRows(){
 		return numRows;
 	}
-	
+
 	public int getNumColumns(){
 		return numColumns;
 	}
-	
+
 	public BoardCell getCellAt(int r, int c){
 		return board[r][c];
+	}
+
+	public Map<String, Player> getPeople() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

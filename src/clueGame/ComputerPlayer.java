@@ -2,7 +2,7 @@ package clueGame;
 
 import java.util.Set;
 
-public class ComputerPlayer {
+public class ComputerPlayer extends Player {
 	
 	public ComputerPlayer() {
 		// TODO Auto-generated constructor stub

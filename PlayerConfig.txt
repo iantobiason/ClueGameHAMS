@@ -1,0 +1,7 @@
+King Cursader,Red,21,18
+Mountian Man,Brown,15,22
+Sailor Samson,Cyan,6,22
+NeckBeard Nikoli,Orange,14,0
+WhiteNight,Black,13,0
+PartyGirl Primrose,Pink,11,21
+ 
