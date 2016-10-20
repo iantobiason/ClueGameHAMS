@@ -151,6 +151,22 @@ public class Board {
 		}
 	}
 	
+	public void loadConfigFiles(){
+
+	}
+	
+	public void selectAnswer(){
+		
+	}
+	
+	public Card handleSugguestion(){
+		return null;
+	}
+	
+	public boolean checkAccusation(){
+		return false;
+	}
+	
 	public void calcTargets(int row, int column, int pathLength){
 		visited.add(board[row][column]);
 		targets.clear();
