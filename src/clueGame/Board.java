@@ -32,6 +32,10 @@ public class Board {
 
 	private String roomConfigFile;
 	
+	private String playerConfigFile;
+	
+	private String weaponConfigFile;
+	
 	private Set<Card> weapons;
 	
 	private Set<Card> people;
@@ -159,7 +163,24 @@ public class Board {
 		}
 	}
 
-	public void loadPeople(){
+	public void loadPeople() throws BadConfigFormatException {
+		computerPlayers = new HashMap<String, Player>();
+		people = new HashSet<Card>();
+		Scanner peopleRead = null;
+		try {
+			peopleRead = new Scanner(new FileReader(playerConfigFile));
+		}
+		catch (FileNotFoundException e){
+			e.getMessage();
+		}
+		while (peopleRead.hasNext()){
+			String line = peopleRead.nextLine();
+			String[] fields = line.split(",");
+			Player tempPlayer = new Player(fields[0],fields[1],fields[2],fields[3]);
+			computerPlayers.put(fields[0], tempPlayer);
+			Card tempCard = new Card(fields[0], CardType.PERSON);
+			people.add(tempCard);
+		}
 		
 	}
 	public void loadWeapons(){
@@ -351,6 +372,13 @@ public class Board {
 	public void setConfigFiles(String input, String legend){
 		boardConfigFile = input;
 		roomConfigFile = legend;
+		
+
+	}
+	public void setPlayerAndWeaponConfigFiles(String players, String weapons){
+		playerConfigFile = players;
+		weaponConfigFile = weapons;
+		
 
 	}
 
@@ -370,7 +398,9 @@ public class Board {
 	}
 
 	public Map<String, Player> getPeople() {
-		// TODO Auto-generated method stub
-		return null;
+		return computerPlayers;
+	}
+	public Set<Card> getPlayerCards() {
+		return people;
 	}
 }

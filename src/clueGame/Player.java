@@ -8,7 +8,16 @@ public class Player {
 	private int column;
 	private Color color;
 	public Player() {
-		// TODO Auto-generated constructor stub
+		
+	}
+	public Player(String playerName, String color, String row, String column) {
+		System.out.println(playerName + row + column + color );
+		this.playerName = playerName;
+		this.row = Integer.parseInt(row);
+		this.column = Integer.parseInt(column);
+		this.color = Color.getColor(color);
+		
+		
 	}
 	public Card disproveSuggestion(Solution suggestion) {
 		return null;
