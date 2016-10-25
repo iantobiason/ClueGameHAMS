@@ -24,7 +24,8 @@ public class BoardAdjTargetTests {
 	public static void setUp() {
 		// Board is singleton, get the only instance and initialize it		
 		board = Board.getInstance();
-		board.setConfigFiles("ClueLayout.csv", "Legend.txt");		
+		board.setConfigFiles("ClueLayout.csv", "Legend.txt");
+		board.setPlayerAndWeaponConfigFiles("PlayerConfig.txt", "WeaponsConfig.txt");
 		board.initialize();
 	}
 

@@ -36,7 +36,7 @@ public class InitTests {
 		board = Board.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout.csv", "Legend.txt");		
-		// Initialize will load BOTH config files
+		board.setPlayerAndWeaponConfigFiles("PlayerConfig.txt", "WeaponsConfig.txt");
 		board.initialize();
 	}
 	@Test
