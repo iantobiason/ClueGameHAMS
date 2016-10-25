@@ -49,7 +49,7 @@ public class Board {
 	
 	private Map<String,Player> cluePlayers;
 	
-	private Map<String,String> soultion;
+	private Map<String,String> solution;
 
 	private Board() {}
 
@@ -69,6 +69,7 @@ public class Board {
 		}
 		calcAdjacencies();
 		createDeck();
+		dealCards();
 	}
 
 	public void loadRoomFile() throws BadConfigFormatException{
@@ -410,12 +411,56 @@ public class Board {
 		deck.addAll(roomCards);
 		deck.addAll(peopleCards);
 		Collections.shuffle(deck);
-		for (Card o : deck) {
-			System.out.println(o.getName());
-		}
+
 	}
 	
+	public void dealCards(){
 	
+		solution = new HashMap<String, String>();
+		
+		Card[] cardsForPlayers = new Card[18];
+		int j = 0;
+		for (int i = 0; i < deck.size(); i++) {
+			CardType cardType = deck.get(i).getType();
+			switch(cardType){
+			case ROOM:
+				if(!solution.containsKey("Room")){
+					solution.put("Room", deck.get(i).getName());
+				}
+				else{
+					cardsForPlayers[j] = deck.get(i);
+					j++;
+				}
+				break;
+			case PERSON:
+				if(!solution.containsKey("Person")){
+					solution.put("Person", deck.get(i).getName());
+				}
+				else{
+					cardsForPlayers[j] = deck.get(i);
+					j++;
+				}
+				break;
+			case WEAPON:
+				if(!solution.containsKey("Weapon")){
+					solution.put("Weapon", deck.get(i).getName());
+				}
+				else{
+					cardsForPlayers[j] = deck.get(i);
+					j++;
+				}
+				break;
+			}
+		}
+		j = 0;
+		for(Player p : cluePlayers.values()){
+			for (int i = 0; i < 3; i++) {
+				p.cardsInHand[i] = cardsForPlayers[j];
+				j++;
+			}
+		}
+		
+	}
 	
 	public Set<BoardCell> getTargets(){
 		return targets;
@@ -469,4 +514,8 @@ public class Board {
 	public ArrayList<Card> getDeck() {
 		return deck;
 	}
+	public Map<String,String> getSolution(){
+		return solution;
+	}
+	
 }

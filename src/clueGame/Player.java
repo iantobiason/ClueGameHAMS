@@ -7,7 +7,7 @@ public class Player {
 	private int row;
 	private int column;
 	private Color color;
-	private Card [] cardsInHand;
+	public Card [] cardsInHand;
 	public Player() {
 		
 	}
@@ -16,6 +16,7 @@ public class Player {
 		this.row = Integer.parseInt(row);
 		this.column = Integer.parseInt(column);
 		this.color = Color.getColor(color);
+		cardsInHand = new Card[3];
 		
 		
 	}
