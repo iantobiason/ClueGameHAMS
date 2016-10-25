@@ -7,6 +7,7 @@ public class Player {
 	private int row;
 	private int column;
 	private Color color;
+	private Card [] cardsInHand;
 	public Player() {
 		
 	}
