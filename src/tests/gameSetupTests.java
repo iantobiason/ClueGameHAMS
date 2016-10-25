@@ -43,4 +43,13 @@ public class gameSetupTests {
 		assertEquals(21, deck.size());
 		
 	}
+	
+	@Test
+	public void testDealingHands() {
+		//Checks for soultion cards
+		
+		//Checks that each player has 3 cards
+		
+	}
+	
 }
