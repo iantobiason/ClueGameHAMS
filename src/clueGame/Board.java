@@ -2,6 +2,7 @@ package clueGame;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -36,9 +37,13 @@ public class Board {
 	
 	private String weaponConfigFile;
 	
-	private Set<Card> weapons;
+	private Set<Card> weaponCards;
 	
-	private Set<Card> people;
+	private Set<Card> peopleCards;
+	
+	private Set<Card> roomCards;
+	
+	private ArrayList<Card> deck;
 	
 	private Map<String,Player> computerPlayers;
 
@@ -53,7 +58,8 @@ public class Board {
 			loadRoomFile();
 			loadBoardConfig();
 			loadPeople();
-			loadWeapons();
+			loadWeaponCards();
+			loadRoomCards();
 		} catch (BadConfigFormatException e) {
 			e.printStackTrace();
 		}
@@ -165,7 +171,7 @@ public class Board {
 
 	public void loadPeople() throws BadConfigFormatException {
 		computerPlayers = new HashMap<String, Player>();
-		people = new HashSet<Card>();
+		peopleCards = new HashSet<Card>();
 		Scanner peopleRead = null;
 		try {
 			peopleRead = new Scanner(new FileReader(playerConfigFile));
@@ -179,13 +185,43 @@ public class Board {
 			Player tempPlayer = new Player(fields[0],fields[1],fields[2],fields[3]);
 			computerPlayers.put(fields[0], tempPlayer);
 			Card tempCard = new Card(fields[0], CardType.PERSON);
-			people.add(tempCard);
+			peopleCards.add(tempCard);
 		}
 		
 	}
-	public void loadWeapons(){
-
+	public void loadWeaponCards(){
+		weaponCards = new HashSet<Card>();
+		Scanner weaponRead = null;
+		try {
+			weaponRead = new Scanner(new FileReader(weaponConfigFile));
+		}
+		catch (FileNotFoundException e){
+			e.getMessage();
+		}
+		while (weaponRead.hasNext()){
+			String line = weaponRead.nextLine();
+			Card tempCard = new Card(line, CardType.WEAPON);
+			weaponCards.add(tempCard);
+		}
 	}
+	
+	public void loadRoomCards(){
+		roomCards = new HashSet<Card>();
+		Scanner weaponRead = null;
+		try {
+			weaponRead = new Scanner(new FileReader(roomConfigFile));
+		}
+		catch (FileNotFoundException e){
+			e.getMessage();
+		}
+		while (weaponRead.hasNext()){
+			String line = weaponRead.nextLine();
+			String[] fields = line.split(", ");
+			Card tempCard = new Card(fields[1], CardType.ROOM);
+			roomCards.add(tempCard);
+		}
+	}
+
 
 	public void selectAnswer(){
 
@@ -401,6 +437,15 @@ public class Board {
 		return computerPlayers;
 	}
 	public Set<Card> getPlayerCards() {
-		return people;
+		return peopleCards;
+	}
+	public Set<Card> getWeaponCards() {
+		return weaponCards;
+	}
+	public Set<Card> getRoomCards() {
+		return roomCards;
+	}
+	public ArrayList<Card> getDeck() {
+		return deck;
 	}
 }
