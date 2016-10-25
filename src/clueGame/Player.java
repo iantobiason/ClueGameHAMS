@@ -22,5 +22,9 @@ public class Player {
 	public Card disproveSuggestion(Solution suggestion) {
 		return null;
 	}
+	
+	public Card [] getCardsInHand() {
+		return cardsInHand;
+	}
 
 }
