@@ -3,9 +3,11 @@ package clueGame;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import tests.InitTests;
@@ -46,6 +48,8 @@ public class Board {
 	private ArrayList<Card> deck;
 	
 	private Map<String,Player> computerPlayers;
+	
+	private Map<String,String> soultion;
 
 	private Board() {}
 
@@ -64,6 +68,7 @@ public class Board {
 			e.printStackTrace();
 		}
 		calcAdjacencies();
+		createDeck();
 	}
 
 	public void loadRoomFile() throws BadConfigFormatException{
@@ -207,18 +212,20 @@ public class Board {
 	
 	public void loadRoomCards(){
 		roomCards = new HashSet<Card>();
-		Scanner weaponRead = null;
+		Scanner roomRead = null;
 		try {
-			weaponRead = new Scanner(new FileReader(roomConfigFile));
+			roomRead = new Scanner(new FileReader(roomConfigFile));
 		}
 		catch (FileNotFoundException e){
 			e.getMessage();
 		}
-		while (weaponRead.hasNext()){
-			String line = weaponRead.nextLine();
+		while (roomRead.hasNext()){
+			String line = roomRead.nextLine();
 			String[] fields = line.split(", ");
 			Card tempCard = new Card(fields[1], CardType.ROOM);
-			roomCards.add(tempCard);
+			if(fields[2].equals("Card")){
+				roomCards.add(tempCard);
+			}
 		}
 	}
 
@@ -396,6 +403,20 @@ public class Board {
 		}
 	}
 
+	public void createDeck(){
+		deck = new ArrayList<Card>();
+		//Add all cards to deck from different sets
+		deck.addAll(weaponCards);
+		deck.addAll(roomCards);
+		deck.addAll(peopleCards);
+		Collections.shuffle(deck);
+		for (Card o : deck) {
+			System.out.println(o.getName());
+		}
+	}
+	
+	
+	
 	public Set<BoardCell> getTargets(){
 		return targets;
 	}

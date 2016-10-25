@@ -11,7 +11,6 @@ public class Player {
 		
 	}
 	public Player(String playerName, String color, String row, String column) {
-		System.out.println(playerName + row + column + color );
 		this.playerName = playerName;
 		this.row = Integer.parseInt(row);
 		this.column = Integer.parseInt(column);

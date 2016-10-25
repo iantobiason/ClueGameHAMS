@@ -37,10 +37,10 @@ public class gameSetupTests {
 		assertEquals(6, weaponCardLegend.size());
 		
 		Set<Card> roomCardLegend = board.getRoomCards();
-		assertEquals(11, roomCardLegend.size());
+		assertEquals(9, roomCardLegend.size());
 		
 		ArrayList<Card> deck = board.getDeck();
-		assertEquals(23, deck.size());
+		assertEquals(21, deck.size());
 		
 	}
 }
