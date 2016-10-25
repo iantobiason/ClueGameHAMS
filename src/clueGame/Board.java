@@ -47,7 +47,7 @@ public class Board {
 	
 	private ArrayList<Card> deck;
 	
-	private Map<String,Player> computerPlayers;
+	private Map<String,Player> cluePlayers;
 	
 	private Map<String,String> soultion;
 
@@ -175,7 +175,7 @@ public class Board {
 	}
 
 	public void loadPeople() throws BadConfigFormatException {
-		computerPlayers = new HashMap<String, Player>();
+		cluePlayers = new HashMap<String, Player>();
 		peopleCards = new HashSet<Card>();
 		Scanner peopleRead = null;
 		try {
@@ -188,7 +188,7 @@ public class Board {
 			String line = peopleRead.nextLine();
 			String[] fields = line.split(",");
 			Player tempPlayer = new Player(fields[0],fields[1],fields[2],fields[3]);
-			computerPlayers.put(fields[0], tempPlayer);
+			cluePlayers.put(fields[0], tempPlayer);
 			Card tempCard = new Card(fields[0], CardType.PERSON);
 			peopleCards.add(tempCard);
 		}
@@ -455,7 +455,7 @@ public class Board {
 	}
 
 	public Map<String, Player> getPeople() {
-		return computerPlayers;
+		return cluePlayers;
 	}
 	public Set<Card> getPlayerCards() {
 		return peopleCards;

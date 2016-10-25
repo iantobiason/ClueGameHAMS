@@ -46,10 +46,20 @@ public class gameSetupTests {
 	
 	@Test
 	public void testDealingHands() {
-		//Checks for soultion cards
+		//Checks for solution cards
+		Map<String, String> solution = board.getSolution();
+		assertNotNull(solution.get("Room"));
+		assertNotNull(solution.get("Person"));
+		assertNotNull(solution.get("Weapon"));
 		
 		//Checks that each player has 3 cards
-		
+		Map<String,Player> players = board.getPeople();
+		assertEquals(3, players.get("King Crusader").getCardsInHand().length);
+		assertEquals(3, players.get("Mountian Man").getCardsInHand().length);
+		assertEquals(3, players.get("Sailor Samson").getCardsInHand().length);
+		assertEquals(3, players.get("NeckBeard Nikoli").getCardsInHand().length);
+		assertEquals(3, players.get("WhiteNight").getCardsInHand().length);
+		assertEquals(3, players.get("PartyGirl Primrose").getCardsInHand().length);
 	}
 	
 }
