@@ -523,5 +523,7 @@ public class Board {
 		solution.put("Person", person);
 		solution.put("Weapon", weapon);
 	}
-	
+	public Map<Character, String> getRooms() {
+		return rooms;
+	}
 }

@@ -1,7 +1,9 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 public class Player {
@@ -13,13 +15,17 @@ public class Player {
 	private Set<Card> seenRooms;
 	private Set<Card> seenPersons;
 	private Set<Card> seenWeapons;
-	
+	private Board board;
+
 	public Card [] cardsInHand;
-	
-	
-	
+
+
 	public Player() {
 		suggestion = new String[3];
+	}
+	public Player(Board board) {
+		suggestion = new String[3];
+		this.board = board;
 	}
 	public Player(String playerName, String color, String row, String column) {
 		this.playerName = playerName;
@@ -28,8 +34,8 @@ public class Player {
 		this.color = Color.getColor(color);
 		cardsInHand = new Card[3];
 		suggestion = new String[3];
-		
-		
+
+
 	}
 	public int getRow() {
 		return row;
@@ -46,7 +52,7 @@ public class Player {
 	public Card disproveSuggestion(Solution suggestion) {
 		return null;
 	}
-	
+
 	public Card [] getCardsInHand() {
 		return cardsInHand;
 	}
@@ -56,21 +62,80 @@ public class Player {
 		}
 		return false;
 	}
-	
-	public Card makeRoomSuggestion() {
-		return null;
+
+	public char makeRoomSuggestion() {
+		return board.getCellAt(row, column).getInitial();
+
 	}
 	public Card makeWeaponSuggestion(Set<Card> seenWeaponCards) {
+		Set<Card> maybeMurderWeapons = new HashSet<Card>();
+		for(Card o : board.getWeaponCards()) {
+			maybeMurderWeapons.add(o);
+		}
+		Card cardToRemove = null;
+		for(Card o: seenWeaponCards) {
+			for(Card j: maybeMurderWeapons) {
+				if(o.getName().equals(j.getName())) {
+					cardToRemove = j;
+				}
+			}
+			maybeMurderWeapons.remove(cardToRemove);
+		}
+		if(seenWeaponCards.size() == 5) {
+			for(Card o: maybeMurderWeapons) {
+				return o;
+			}
+		}
+		else {
+			int size = maybeMurderWeapons.size();
+			int item = new Random().nextInt(size);
+			int i = 0;
+			for(Card o: maybeMurderWeapons) {
+				if (i == item) {
+					return o;
+				}
+				i = i + 1;
+			}
+		}
+		System.out.println("Error, didn't make weapon suggestion");
 		return null;
 	}
 	public Card makePersonSuggestion(Set<Card> seenPersonCards) {
+		Set<Card> maybeMurderer = new HashSet<Card>();
+		maybeMurderer = board.getPlayerCards();
+		Card cardToRemove = null;
+		for(Card o: seenPersonCards) {
+			for(Card j: maybeMurderer) {
+				if(o.getName().equals(j.getName())) {
+					cardToRemove = j;
+				}
+			}
+			maybeMurderer.remove(cardToRemove);
+		}
+		if(seenPersonCards.size() == 5) {
+			for(Card o: maybeMurderer) {
+				return o;
+			}
+		}
+		else {
+			int size = maybeMurderer.size();
+			int item = new Random().nextInt(size);
+			int i = 0;
+			for(Card o: maybeMurderer) {
+				if (i == item) {
+					return o;
+				}
+				i = i + 1;
+			}
+		}
+		System.out.println("Error, didn't make person suggestion");
 		return null;
 	}
 	public void makeSuggestion() {
 		makeRoomSuggestion();
 		makePersonSuggestion(seenPersons);
 		makeWeaponSuggestion(seenWeapons);
-		
+
 	}
 
 }

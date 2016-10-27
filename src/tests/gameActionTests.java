@@ -52,7 +52,7 @@ public class gameActionTests {
 	
 	@Test
 	public void testMakeAccusation(){
-		Player testPlayer = new Player();
+		Player testPlayer = new Player(board);
 		board.setSolution("Senate", "WhiteNight", "Katana");
 		//Correct Accusation
 		assertTrue(testPlayer.makeAccusation("Senate", "WhiteNight", "Katana", board));
@@ -74,21 +74,21 @@ public class gameActionTests {
 		
 		BoardCell room = board.getCellAt(0, 0);
 		
-		Player testPlayer = new Player();
+		Player testPlayer = new Player(board);
 		
 		testPlayer.setRow(0);
 		testPlayer.setColumn(0);
-		assertEquals(board.getCellAt(testPlayer.getRow(), testPlayer.getColumn()),testPlayer.makeRoomSuggestion());
+		assertEquals(board.getCellAt(testPlayer.getRow(), testPlayer.getColumn()).getInitial(),testPlayer.makeRoomSuggestion());
 		
-		
+		System.out.println(board.getWeaponCards().size());
 		seenWeaponCards.add(new Card("Nike Sweatpants", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Pickle Jar", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Katana", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Mommy's Bedroom helper", CardType.WEAPON));
 		board.setSolution("Senate", "WhiteNight", "Political Influence");
-		assertEquals(board.getSolution().get("Weapon"),testPlayer.makeWeaponSuggestion(seenWeaponCards));
-		
+		assertEquals(board.getSolution().get("Weapon"),testPlayer.makeWeaponSuggestion(seenWeaponCards).getName());
+		System.out.println(board.getWeaponCards().size());
 
 		seenPersonCards.add(new Card("King Crusader", CardType.PERSON));
 		seenPersonCards.add(new Card("Mountian Man", CardType.PERSON));
@@ -96,17 +96,17 @@ public class gameActionTests {
 		seenPersonCards.add(new Card("NeckBeard Nikoli", CardType.PERSON));
 		seenPersonCards.add(new Card("PartyGirl Primrose", CardType.PERSON));
 		board.setSolution("Senate", "WhiteNight", "Political Influence");
-		assertEquals(board.getSolution().get("Person"),testPlayer.makePersonSuggestion(seenPersonCards));
+		assertEquals(board.getSolution().get("Person"),testPlayer.makePersonSuggestion(seenPersonCards).getName());
 		
 		
 		seenWeaponCards.clear();
 		seenWeaponCards.add(new Card("Nike Sweatpants", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Pickle Jar", CardType.WEAPON));
+		seenWeaponCards.add(new Card("Political Influence", CardType.WEAPON));
 		unseenCards.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		unseenCards.add(new Card("Katana", CardType.WEAPON));
 		unseenCards.add(new Card("Mommy's Bedroom helper", CardType.WEAPON));
-		unseenCards.add(new Card("Political Influence", CardType.WEAPON));
-		board.setSolution("Senate", "WhiteNight", "Political Influence");
+		System.out.println(testPlayer.makeWeaponSuggestion(seenWeaponCards).getName());
 		assertTrue(unseenCards.contains(testPlayer.makeWeaponSuggestion(seenWeaponCards)));
 		
 		
