@@ -1,5 +1,8 @@
 package clueGame;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class ComputerPlayer extends Player {
@@ -10,7 +13,14 @@ public class ComputerPlayer extends Player {
 		// TODO Auto-generated constructor stub
 	}
 	public BoardCell pickLocation(Set<BoardCell> targets) {
-		return null;
+		ArrayList<BoardCell> listOfCells = new ArrayList<BoardCell>(targets);
+		for(BoardCell b: listOfCells){
+			if(b.isDoorway() && b.getInitial() != recentRoom){
+				return b;
+			}
+		}
+		Random rn = new Random();
+		return listOfCells.get(rn.nextInt(listOfCells.size()));
 	}
 	public void makeAccusation() {
 		

@@ -30,7 +30,7 @@ public class gameActionTests {
 		board.calcTargets(13, 8, 3);
 		Set<BoardCell> targets = board.getTargets();
 		BoardCell selectedLocation = computerTest.pickLocation(targets);
-		assertTrue(selectedLocation.equals(board.getCellAt(13, 8)));
+		assertTrue(selectedLocation.equals(board.getCellAt(16, 8)));
 		
 		//Chose target when door is within targets and recently visited
 		computerTest = new ComputerPlayer();
@@ -39,7 +39,7 @@ public class gameActionTests {
 		targets = board.getTargets();
 		selectedLocation = computerTest.pickLocation(targets);
 		assertTrue(targets.contains(selectedLocation));
-		assertTrue(targets.contains(board.getCellAt(0, 0))); //Checks if door is within the returned targets
+		assertTrue(targets.contains(board.getCellAt(16, 8))); //Checks if door is within the returned targets
 		
 		//Chose target when no doors are within range
 		board.calcTargets(14, 8, 1);
