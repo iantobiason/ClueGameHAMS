@@ -165,5 +165,98 @@ public class gameActionTests {
 		assertTrue(unseenCards.contains(testPlayer.makePersonSuggestion(seenPersonCards)));
 	}
 	
+	@Test
+	public void testHandleSuggestion(){
+		ArrayList<Player> players = board.getPlayers();
+		
+		Player tempPlayer = players.get(0);
+		Card[] hand = {new Card("Chancelor Office", CardType.ROOM), new Card("King Crusader", CardType.PERSON),
+		new Card("Nike Sweatpants", CardType.WEAPON)};
+		tempPlayer.setHand(hand);
+		players.set(0, tempPlayer);
+		
+		tempPlayer = players.get(1);
+		hand[0] = new Card("PartyGirl Primrose", CardType.PERSON);
+		hand[1] = new Card("Corusant Underworld", CardType.ROOM);
+		hand[2] = new Card("Katana", CardType.WEAPON);
+		tempPlayer.setHand(hand);
+		players.set(1, tempPlayer);
+		
+		tempPlayer = players.get(2);
+		hand[0] = new Card("Mountian Man", CardType.PERSON);
+		hand[1] = new Card("Padme Amadala Residence", CardType.ROOM);
+		hand[2] = new Card("The Works", CardType.ROOM);
+		tempPlayer.setHand(hand);
+		players.set(2, tempPlayer);
+		
+		tempPlayer = players.get(3);
+		hand[0] = new Card("Jedi Council Tower", CardType.ROOM);
+		hand[1] = new Card("WhiteNight", CardType.PERSON);
+		hand[2] = new Card("Sailor Samson", CardType.PERSON);
+		tempPlayer.setHand(hand);
+		players.set(3, tempPlayer);
+		
+		tempPlayer = players.get(4);
+		hand[0] = new Card("Political Influence", CardType.WEAPON);
+		hand[1] = new Card("Mommy's Bedroom helper", CardType.WEAPON);
+		hand[2] = new Card("Represantitive Quarters", CardType.ROOM);
+		tempPlayer.setHand(hand);
+		players.set(4, tempPlayer);
+		
+		tempPlayer = players.get(5);
+		hand[0] = new Card("Jedi Temple", CardType.ROOM);
+		hand[1] = new Card("Senate", CardType.ROOM);
+		hand[2] = new Card("Pickle Jar", CardType.WEAPON);
+		tempPlayer.setHand(hand);
+		players.set(5, tempPlayer);
+		
+		//Suggestion no one can disprove 
+		//Accusor: Comp1 Cards: "Military Base", "Prosthetic Leg", "NeckBeard Nikoli"
+		Set<Card> suggestion = new HashSet<Card>();
+		suggestion.add(new Card("Military Base", CardType.ROOM));
+		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
+		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
+		board.handleSuggestion(suggestion);
+		
+		//Suggestion only accusing player can disprove
+		//Accusor: Comp1 Cards: "Military Base", "Prosthetic Leg", "PartyGirl Primrose"
+		suggestion = new HashSet<Card>();
+		suggestion.add(new Card("Military Base", CardType.ROOM));
+		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
+		suggestion.add(new Card("PartyGirl Primrose", CardType.PERSON));
+		board.handleSuggestion(suggestion);
+		
+		//Suggestion only human can disprove
+		//Accusor: Comp1 Cards: "Chancelor Office", "Prosthetic Leg", "NeckBeard Nikoli"
+		suggestion = new HashSet<Card>();
+		suggestion.add(new Card("Chancelor Office", CardType.ROOM));
+		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
+		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
+		board.handleSuggestion(suggestion);
+		
+		//Suggestion only human can disprove but human is accuser
+		//Accusor: Human Cards: "Chancelor Office", "Prosthetic Leg", "NeckBeard Nikoli"
+		suggestion = new HashSet<Card>();
+		suggestion.add(new Card("Chancelor Office", CardType.ROOM));
+		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
+		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
+		board.handleSuggestion(suggestion);
+		
+		//Suggestion that two players can disprove but correct player does
+		//Accusor: Comp1 Cards: "Jedi Council Tower", "Prosthetic Leg", "Mountian Man"
+		suggestion = new HashSet<Card>();
+		suggestion.add(new Card("Jedi Council Tower", CardType.ROOM));
+		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
+		suggestion.add(new Card("Mountian Man", CardType.PERSON));
+		board.handleSuggestion(suggestion);
+		
+		//Suggestion that human and another player can disprove
+		//Accusor: Comp1 Cards: "Military Base", "Nike Sweatpants", "Sailor Samson"
+		suggestion = new HashSet<Card>();
+		suggestion.add(new Card("Military Base", CardType.ROOM));
+		suggestion.add(new Card("Nike Sweatpants", CardType.WEAPON));
+		suggestion.add(new Card("Sailor Samson", CardType.PERSON));
+		board.handleSuggestion(suggestion);
+	}
 }
 	

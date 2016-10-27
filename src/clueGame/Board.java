@@ -526,4 +526,14 @@ public class Board {
 	public Map<Character, String> getRooms() {
 		return rooms;
 	}
+
+	public void handleSuggestion(Set<Card> suggestion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<Player> getPlayers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
