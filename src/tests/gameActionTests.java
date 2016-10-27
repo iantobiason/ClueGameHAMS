@@ -65,6 +65,49 @@ public class gameActionTests {
 	}
 	
 	@Test
+	public void computerDisproveSuggestion(){
+		ComputerPlayer comp = new ComputerPlayer();
+		Card[] hand = {new Card("Senate", CardType.ROOM), new Card("WhiteNight", CardType.PERSON),
+		new Card("Katana", CardType.WEAPON)};
+		comp.setHand(hand);
+		
+		//Computer only one card matches suggestions
+		//makes suggestion with only one card of the players hand
+		Set<Card> suggestion = new HashSet<Card>();
+		suggestion.add(hand[0]);
+		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
+		suggestion.add(new Card("Pickle Jar", CardType.WEAPON));
+		
+		assertEquals(hand[0], comp.disproveSuggestion(suggestion));
+		
+		
+		//Computer multiples cards matches suggestion
+		//Makes suggest with all cards in players hand
+		suggestion = new HashSet<Card>();
+		for(int i = 0; i < hand.length; i++){
+			suggestion.add(hand[i]);
+		}
+		
+		suggestion = new HashSet<Card>();
+		suggestion.add(hand[0]);
+		suggestion.add(hand[1]);
+		suggestion.add(hand[2]);
+		
+		assertTrue(suggestion.contains(comp.disproveSuggestion(suggestion)));
+		
+		//Computer multiples cards matches suggestion
+		//Makes suggest with all cards in players hand
+		
+		suggestion = new HashSet<Card>();
+		suggestion.add(new Card("The Works", CardType.ROOM));
+		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
+		suggestion.add(new Card("Pickle Jar", CardType.WEAPON));
+		assertNull(comp.disproveSuggestion(suggestion));
+		
+	}
+
+	
+	@Test
 	public void testSuggestion() {
 		Set<Card> seenRoomCards = new HashSet<Card>();
 		Set<Card> seenPersonCards = new HashSet<Card>();
@@ -120,8 +163,7 @@ public class gameActionTests {
 		unseenCards.add(new Card("WhiteNight", CardType.PERSON));
 		board.setSolution("Senate", "WhiteNight", "Political Influence");
 		assertTrue(unseenCards.contains(testPlayer.makePersonSuggestion(seenPersonCards)));
-		
-		
 	}
+	
 }
 	

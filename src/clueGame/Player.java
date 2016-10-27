@@ -49,6 +49,10 @@ public class Player {
 	public void setColumn(int column) {
 		this.column = column;
 	}
+	
+	public void setHand(Card[] cards){
+		cardsInHand = cards;
+	}
 	public Card disproveSuggestion(Solution suggestion) {
 		return null;
 	}

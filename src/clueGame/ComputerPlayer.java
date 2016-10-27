@@ -31,5 +31,9 @@ public class ComputerPlayer extends Player {
 	public void setRecent(char c) {
 		recentRoom = c;
 	}
+	public Object disproveSuggestion(Set<Card> suggestion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
