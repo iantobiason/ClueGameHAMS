@@ -7,9 +7,11 @@ public class Player {
 	private int row;
 	private int column;
 	private Color color;
+	private String[] suggestion;
 	public Card [] cardsInHand;
+	
 	public Player() {
-		
+		suggestion = new String[3];
 	}
 	public Player(String playerName, String color, String row, String column) {
 		this.playerName = playerName;
@@ -26,6 +28,10 @@ public class Player {
 	
 	public Card [] getCardsInHand() {
 		return cardsInHand;
+	}
+	public boolean makeAccusation(String room, String person, String weapon) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -517,5 +517,10 @@ public class Board {
 	public Map<String,String> getSolution(){
 		return solution;
 	}
+
+	public void setSolution(String string, String string2, String string3) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -48,4 +48,18 @@ public class gameActionTests {
 		assertTrue(targets.contains(selectedLocation));
 	}
 	
+	@Test
+	public void testMakeAccusation(){
+		Player testPlayer = new Player();
+		board.setSolution("Senate", "WhiteNight", "Katana");
+		//Correct Accusation
+		assertTrue(testPlayer.makeAccusation("Senate", "WhiteNight", "Katana"));
+		//Room incorrect
+		assertFalse(testPlayer.makeAccusation("The Works", "WhiteNight", "Katana"));
+		//Person incorrect
+		assertFalse(testPlayer.makeAccusation("Senate", "NeckBeard Nikoli", "Katana"));
+		//Weapon incorrect
+		assertFalse(testPlayer.makeAccusation("Senate", "WhiteNight", "Pickle Jar"));
+	}
+	
 }
