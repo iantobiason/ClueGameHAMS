@@ -1,0 +1,273 @@
+commit b79596b7247685ea5c985e73c87a8c6eeed17539
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Tue Oct 25 12:57:50 2016 -0600
+
+    Sets weapon and person config files for all tests
+
+commit a6356a5d02f26275c3de0104e0c466c4f3032329
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Tue Oct 25 12:49:19 2016 -0600
+
+    Impletmented Dealing Function
+
+commit b4d59f040e177845c1dc14babc2e2475a03cda79
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Tue Oct 25 12:21:47 2016 -0600
+
+    Finished falling test for dealing cards
+
+commit 74c063802bcb20992ba3694c78b1831ae3c63aa3
+Author: Ian Tobiason <itobiaso@adit.mines.edu>
+Date:   Tue Oct 25 12:18:28 2016 -0600
+
+    Added getter for cards in hand for player class
+
+commit 0a5e4c7aa5b2ad9261e02cb7f30acbd788eecb2e
+Author: Ian Tobiason <itobiaso@adit.mines.edu>
+Date:   Tue Oct 25 12:15:38 2016 -0600
+
+    Added card array for player class, for the cards in player hand
+
+commit 9c8146ee92b604adb836df6c4e23f96bd9b36e57
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Tue Oct 25 12:09:59 2016 -0600
+
+    Began writing test for dealing and changed players var name
+
+commit db366b4686a54a94e9065dac4d9c19c253ee0d41
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Tue Oct 25 12:05:14 2016 -0600
+
+    Implemented deck creation method
+
+commit d4aec2e87ee2eb39bdb35423efede5033bd22c45
+Author: Ian Tobiason <itobiaso@adit.mines.edu>
+Date:   Tue Oct 25 11:40:13 2016 -0600
+
+    Created failing test for loading and creation of deck
+
+commit b6bb3e7383a9ccf3ede0a3d0a257fe660cb219d7
+Author: Ian Tobiason <itobiaso@adit.mines.edu>
+Date:   Thu Oct 20 12:42:22 2016 -0600
+
+    Created methods to pass the test for loading in computer players
+
+commit 964696d9098828fe80b7fdf2d68801a7544160ee
+Author: Ian Tobiason <itobiaso@adit.mines.edu>
+Date:   Thu Oct 20 12:06:27 2016 -0600
+
+    Created failing test for loading in computer players
+
+commit 14ea8482408a93445ec56b3d482fe454bf802ea3
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Thu Oct 20 11:23:56 2016 -0600
+
+    Added CardType and Card classes. Also added new methods to board
+
+commit 5cbd29bdbe9da5107d8a46e238a0cef77bb0c585
+Author: Christian McErlean <cmcerlea@mines.edu>
+Date:   Thu Oct 20 11:23:30 2016 -0600
+
+    Added CardType and Card classes. Also added new methods to board
+
+commit 2e1ac3f9d56bec6c1c574a92351af59ec43a49a7
+Author: Ian Tobiason <itobiaso@adit.mines.edu>
+Date:   Thu Oct 20 11:19:00 2016 -0600
+
+    Created four new classes for player functionality
+
+commit d834a85afb4623fb16d3a545f4ebe9e1e02033b7
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Thu Oct 13 12:01:07 2016 -0600
+
+    Changed walway condition to make walkway W instead of A
+
+commit bb1a050b26614faa397c890bce00413e393ad0b8
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Mon Oct 10 15:24:32 2016 -0600
+
+    Finished part 4
+
+commit 147595029a8125c124b631c05c89bd809cd8a124
+Merge: 7ad190c 65b9972
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Fri Oct 7 15:19:08 2016 -0600
+
+    Merge branch 'master' of https://github.com/mszo-nasa/ClueGameHAMS into BoardPartThree
+    
+    Merge BoardPartThree with Master
+
+commit 65b9972f2d6ed9ac6c0b82439afac69e4afbdaff
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Fri Oct 7 15:18:54 2016 -0600
+
+    Highlighted Board
+
+commit 7ad190c61f2c88d93e72df7f1c5128e1fe26a035
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Fri Oct 7 15:17:15 2016 -0600
+
+    Finished BoardAdjTargetsTest
+
+commit f4ede24de9bccc64dd5a558e002adaa42d09d840
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Fri Oct 7 14:29:36 2016 -0600
+
+    Sync for tandem work
+
+commit 13fbc896d5ea54bf2e599c11e8d370cd9f6833ea
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Fri Oct 7 14:26:22 2016 -0600
+
+    Start of Board part 3
+
+commit c42e3706abc522d9fdc25715420789de86b15d18
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Thu Oct 6 14:03:09 2016 -0600
+
+    Finished part 2 of paths
+
+commit a2347aab5e7994f8487e3ff70728f0defb698f45
+Author: huntinator7 <huntinator7@gmail.com>
+Date:   Thu Oct 6 11:02:00 2016 -0600
+
+    More added to Initialize
+
+commit 350e1ff64562477badb430c6db85d482e5471240
+Author: huntinator7 <huntinator7@gmail.com>
+Date:   Thu Oct 6 10:50:56 2016 -0600
+
+    Added start of Board II
+
+commit 74b871d1038d4af38dda08c2d745709fa65fb1e0
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Tue Oct 4 13:46:53 2016 -0600
+
+    Changed legend to not have dexters diner
+
+commit baff1906b83e912787c7acc6893d837c39f73905
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Tue Oct 4 13:43:24 2016 -0600
+
+    Finished with outtests.txt
+
+commit ef44afcb677130f043dc65fa404b06ecf8669c74
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Tue Oct 4 13:38:05 2016 -0600
+
+    Finished junit testing for Part1
+
+commit 0f360aea0a5b384ef60f46b47a1978744244b9fb
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Tue Oct 4 13:17:22 2016 -0600
+
+    Changed padame to P
+
+commit 7587957eeb7d9fcabdffd549b9b58ca577c2791d
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Tue Oct 4 13:14:00 2016 -0600
+
+    lots of changes
+
+commit 3c1bf82d6076f38a5d1c586bdfa15d13c64aebe6
+Merge: 3df8b73 70be257
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Tue Oct 4 12:59:14 2016 -0600
+
+    Testing deletion of legend.txt, and trying merge
+
+commit 3df8b7315f9c2c1ffe8149645f248c0156b88c42
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Tue Oct 4 12:50:32 2016 -0600
+
+    My edits to CR_fileInit
+
+commit 70be2575c7596a5dfebf8853fd80084ccff6e83a
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Tue Oct 4 12:32:03 2016 -0600
+
+    Changed Legend.txt, added new Package, created exception and enum classes, modified Board
+
+commit da4bfb0c91795094f9d841d2d250b71608d62c49
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Tue Oct 4 12:04:05 2016 -0600
+
+    Created skeleton classes for Board, DoorDirection, and modified BoardCell
+
+commit 7e9e07d9c0c36c486c753719368a691be8edcd76
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Tue Oct 4 11:29:38 2016 -0600
+
+    Added various Board files
+
+commit c9597c8c864227aa475afae419d71586520a2d17
+Author: huntinator7 <huntinator7@gmail.com>
+Date:   Mon Oct 3 21:54:33 2016 -0600
+
+    Finished
+
+commit fd112ca0e66c6ffcc9f57297e82f3381b77bee8a
+Author: huntinator7 <huntinator7@gmail.com>
+Date:   Sun Oct 2 03:03:26 2016 -0600
+
+    Fixed getAdjList to work with test, findAllTargets not working but all tests running properly
+
+commit de83dabed12b8c0d68a00348eaae049a21c6c9e7
+Author: huntinator7 <huntinator7@gmail.com>
+Date:   Sun Oct 2 01:41:54 2016 -0600
+
+    Added functionality for getAdjList, fixed findAllTargets. Still not tested
+
+commit d95750e9444abc77972aafad4dffe45f1efe4624
+Author: huntinator7 <huntinator7@gmail.com>
+Date:   Sun Oct 2 00:28:19 2016 -0600
+
+    implemented findAllTargets (Cannot test yet)
+
+commit 043d0aa68e4b1cd29e5a1b595390be95442c3c69
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Fri Sep 30 21:31:59 2016 -0600
+
+    Fixed findAllTargets to return correct type
+
+commit ea54278a4bb307371973ab7574adca5892d933f1
+Author: Hunter Arnell <harnell@adit.mines.edu>
+Date:   Fri Sep 30 21:30:06 2016 -0600
+
+    Added start of findAllTargets function
+
+commit b22a768111d8c39451d5ac370738503a9d35a26d
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Fri Sep 30 20:54:04 2016 -0600
+
+    Finished Part 1 of layout with Hunter, now need to do Part II
+
+commit f503ed5c720ec9552cabaa0221f41f555c2c21d6
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Thu Sep 29 20:43:23 2016 -0600
+
+    Added a part of the JUnit Test framework, need to check with Hunter on a few things. But in theory should be ok to submit
+
+commit dca38a9c173f22475ea51d754a91a852457905c9
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Thu Sep 29 16:48:37 2016 -0600
+
+    "added src/"
+
+commit c680397b7cb733ebaee78ddf349d7b72f2e316e2
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Thu Sep 29 16:46:21 2016 -0600
+
+    Added BoardCell, and IntBoard (unfilled). Need to fill out IntBoardTests by 10/1
+
+commit 831180b0dd7be585c78f4a57aa78847a5fcfe6e0
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Thu Sep 29 12:45:54 2016 -0600
+
+    Added excel Layout File, still needs to get updated though
+
+commit 2ea697127e491fb2a636a04b62ae2905fc28f991
+Author: Michael Szostak <mszostak@mymail.mines.edu>
+Date:   Thu Sep 29 12:38:42 2016 -0600
+
+    First Initialization of ClueGameHAMS with tests, experiment

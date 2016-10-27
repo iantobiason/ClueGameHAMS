@@ -4,6 +4,8 @@ import java.util.Set;
 
 public class ComputerPlayer extends Player {
 	
+	private char recentRoom;
+	
 	public ComputerPlayer() {
 		// TODO Auto-generated constructor stub
 	}
@@ -15,6 +17,9 @@ public class ComputerPlayer extends Player {
 	}
 	public void createSuggestion() {
 		
+	}
+	public void setRecent(char c) {
+		recentRoom = c;
 	}
 
 }

@@ -67,6 +67,13 @@ public class BoardCell {
 					+ "]";
 		}
 		
-		
+		public boolean equals(BoardCell cellToCompare){
+			if(this.row == cellToCompare.getRow() && this.column == cellToCompare.getColumn()){
+				return true;
+			} 
+			else{
+				return false;
+			}
+		}
 
 }
