@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
@@ -56,9 +57,6 @@ public class Player {
 	public void setHand(Card[] cards){
 		cardsInHand = cards;
 	}
-	public Card disproveSuggestion(Solution suggestion) {
-		return null;
-	}
 
 	public Card [] getCardsInHand() {
 		return cardsInHand;
@@ -73,6 +71,24 @@ public class Player {
 	public char makeRoomSuggestion() {
 		return board.getCellAt(row, column).getInitial();
 
+	}
+	public Card disproveSuggestion(Set<Card> suggestion){
+		ArrayList<Card> cardsToReturn = new ArrayList<Card>();
+		for(int i = 0; i < cardsInHand.length; i++){
+			for(Card c : suggestion){
+				if(cardsInHand[i].getName().equals(c.getName())){
+					cardsToReturn.add(c);
+				}
+			}
+		}
+		if(cardsToReturn.size() == 1){
+			return cardsToReturn.get(0);
+		} else if(cardsToReturn.size() >= 1){
+			Random rn = new Random();
+			return cardsToReturn.get(rn.nextInt(cardsToReturn.size()));
+		} else{
+			return null;
+		}
 	}
 	public Card makeWeaponSuggestion(Set<Card> seenWeaponCards) {
 		Set<Card> maybeMurderWeapons = new HashSet<Card>();

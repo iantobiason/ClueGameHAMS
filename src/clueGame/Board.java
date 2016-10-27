@@ -34,21 +34,21 @@ public class Board {
 	private String boardConfigFile;
 
 	private String roomConfigFile;
-	
+
 	private String playerConfigFile;
-	
+
 	private String weaponConfigFile;
-	
+
 	private Set<Card> weaponCards;
-	
+
 	private Set<Card> peopleCards;
-	
+
 	private Set<Card> roomCards;
-	
+
 	private ArrayList<Card> deck;
-	
+
 	private ArrayList<Player> cluePlayers;
-	
+
 	private Map<String,String> solution;
 
 	private Board() {}
@@ -193,7 +193,7 @@ public class Board {
 			Card tempCard = new Card(fields[0], CardType.PERSON);
 			peopleCards.add(tempCard);
 		}
-		
+
 	}
 	public void loadWeaponCards(){
 		weaponCards = new HashSet<Card>();
@@ -210,7 +210,7 @@ public class Board {
 			weaponCards.add(tempCard);
 		}
 	}
-	
+
 	public void loadRoomCards(){
 		roomCards = new HashSet<Card>();
 		Scanner roomRead = null;
@@ -413,11 +413,11 @@ public class Board {
 		Collections.shuffle(deck);
 
 	}
-	
+
 	public void dealCards(){
-	
+
 		solution = new HashMap<String, String>();
-		
+
 		Card[] cardsForPlayers = new Card[18];
 		int j = 0;
 		for (int i = 0; i < deck.size(); i++) {
@@ -459,9 +459,9 @@ public class Board {
 				j++;
 			}
 		}
-		
+
 	}
-	
+
 	public Set<BoardCell> getTargets(){
 		return targets;
 	}
@@ -474,13 +474,13 @@ public class Board {
 	public void setConfigFiles(String input, String legend){
 		boardConfigFile = input;
 		roomConfigFile = legend;
-		
+
 
 	}
 	public void setPlayerAndWeaponConfigFiles(String players, String weapons){
 		playerConfigFile = players;
 		weaponConfigFile = weapons;
-		
+
 
 	}
 
@@ -528,7 +528,19 @@ public class Board {
 	}
 
 	public Card handleSuggestion(int accuser, Set<Card> suggestion) {
-		return null;
+		int playerToDisprove = accuser;
+		Card cardToReturn = null;
+		for (int i = 0; i < 5; i++) {
+			playerToDisprove++;
+			if(playerToDisprove > 5){
+				playerToDisprove = 0;
+			}
+			if(cluePlayers.get(playerToDisprove).disproveSuggestion(suggestion) != null){
+				cardToReturn = cluePlayers.get(playerToDisprove).disproveSuggestion(suggestion);
+				return cardToReturn;
+			}
+		}
+		return cardToReturn;
 	}
 
 

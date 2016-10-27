@@ -123,7 +123,6 @@ public class gameActionTests {
 		testPlayer.setColumn(0);
 		assertEquals(board.getCellAt(testPlayer.getRow(), testPlayer.getColumn()).getInitial(),testPlayer.makeRoomSuggestion());
 		
-		System.out.println(board.getWeaponCards().size());
 		seenWeaponCards.add(new Card("Nike Sweatpants", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Pickle Jar", CardType.WEAPON));
 		seenWeaponCards.add(new Card("Prosthetic Leg", CardType.WEAPON));
@@ -131,7 +130,6 @@ public class gameActionTests {
 		seenWeaponCards.add(new Card("Mommy's Bedroom helper", CardType.WEAPON));
 		board.setSolution("Senate", "WhiteNight", "Political Influence");
 		assertEquals(board.getSolution().get("Weapon"),testPlayer.makeWeaponSuggestion(seenWeaponCards).getName());
-		System.out.println(board.getWeaponCards().size());
 
 		seenPersonCards.add(new Card("King Crusader", CardType.PERSON));
 		seenPersonCards.add(new Card("Mountian Man", CardType.PERSON));
@@ -149,7 +147,6 @@ public class gameActionTests {
 		unseenCards.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		unseenCards.add(new Card("Katana", CardType.WEAPON));
 		unseenCards.add(new Card("Mommy's Bedroom helper", CardType.WEAPON));
-		System.out.println(testPlayer.makeWeaponSuggestion(seenWeaponCards).getName());
 		assertTrue(unseenCards.contains(testPlayer.makeWeaponSuggestion(seenWeaponCards)));
 		
 		
@@ -176,38 +173,43 @@ public class gameActionTests {
 		players.set(0, tempPlayer);
 		
 		tempPlayer = players.get(1);
-		hand[0] = new Card("PartyGirl Primrose", CardType.PERSON);
-		hand[1] = new Card("Corusant Underworld", CardType.ROOM);
-		hand[2] = new Card("Katana", CardType.WEAPON);
-		tempPlayer.setHand(hand);
+		Card[] hand1 = new Card[3];
+		hand1[0] = new Card("PartyGirl Primrose", CardType.PERSON);
+		hand1[1] = new Card("Corusant Underworld", CardType.ROOM);
+		hand1[2] = new Card("Katana", CardType.WEAPON);
+		tempPlayer.setHand(hand1);
 		players.set(1, tempPlayer);
 		
 		tempPlayer = players.get(2);
-		hand[0] = new Card("Mountian Man", CardType.PERSON);
-		hand[1] = new Card("Padme Amadala Residence", CardType.ROOM);
-		hand[2] = new Card("The Works", CardType.ROOM);
-		tempPlayer.setHand(hand);
+		Card[] hand2 = new Card[3];
+		hand2[0] = new Card("Mountian Man", CardType.PERSON);
+		hand2[1] = new Card("Padme Amadala Residence", CardType.ROOM);
+		hand2[2] = new Card("The Works", CardType.ROOM);
+		tempPlayer.setHand(hand2);
 		players.set(2, tempPlayer);
 		
 		tempPlayer = players.get(3);
-		hand[0] = new Card("Jedi Council Tower", CardType.ROOM);
-		hand[1] = new Card("WhiteNight", CardType.PERSON);
-		hand[2] = new Card("Sailor Samson", CardType.PERSON);
-		tempPlayer.setHand(hand);
+		Card[] hand3 = new Card[3];
+		hand3[0] = new Card("Jedi Council Tower", CardType.ROOM);
+		hand3[1] = new Card("WhiteNight", CardType.PERSON);
+		hand3[2] = new Card("Sailor Samson", CardType.PERSON);
+		tempPlayer.setHand(hand3);
 		players.set(3, tempPlayer);
 		
 		tempPlayer = players.get(4);
-		hand[0] = new Card("Political Influence", CardType.WEAPON);
-		hand[1] = new Card("Mommy's Bedroom helper", CardType.WEAPON);
-		hand[2] = new Card("Represantitive Quarters", CardType.ROOM);
-		tempPlayer.setHand(hand);
+		Card[] hand4 = new Card[3];
+		hand4[0] = new Card("Political Influence", CardType.WEAPON);
+		hand4[1] = new Card("Mommy's Bedroom helper", CardType.WEAPON);
+		hand4[2] = new Card("Represantitive Quarters", CardType.ROOM);
+		tempPlayer.setHand(hand4);
 		players.set(4, tempPlayer);
 		
 		tempPlayer = players.get(5);
-		hand[0] = new Card("Jedi Temple", CardType.ROOM);
-		hand[1] = new Card("Senate", CardType.ROOM);
-		hand[2] = new Card("Pickle Jar", CardType.WEAPON);
-		tempPlayer.setHand(hand);
+		Card[] hand5 = new Card[3];
+		hand5[0] = new Card("Jedi Temple", CardType.ROOM);
+		hand5[1] = new Card("Senate", CardType.ROOM);
+		hand5[2] = new Card("Pickle Jar", CardType.WEAPON);
+		tempPlayer.setHand(hand5);
 		players.set(5, tempPlayer);
 		
 		//Suggestion no one can disprove 
