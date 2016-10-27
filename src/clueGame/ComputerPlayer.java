@@ -31,9 +31,23 @@ public class ComputerPlayer extends Player {
 	public void setRecent(char c) {
 		recentRoom = c;
 	}
-	public Object disproveSuggestion(Set<Card> suggestion) {
-		// TODO Auto-generated method stub
-		return null;
+	public Card disproveSuggestion(Set<Card> suggestion){
+		ArrayList<Card> cardsToReturn = new ArrayList<Card>();
+		for(int i = 0; i < cardsInHand.length; i++){
+			for(Card c : suggestion){
+				if(cardsInHand[i].equals(c)){
+					cardsToReturn.add(c);
+				}
+			}
+		}
+		if(cardsToReturn.size() == 1){
+			return cardsToReturn.get(0);
+		} else if(cardsToReturn.size() >= 1){
+			Random rn = new Random();
+			return cardsToReturn.get(rn.nextInt(cardsToReturn.size()));
+		} else{
+			return null;
+		}
 	}
 
 }
