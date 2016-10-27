@@ -40,6 +40,9 @@ public class Player {
 	public int getRow() {
 		return row;
 	}
+	public String getName(){
+		return playerName;
+	}
 	public void setRow(int row) {
 		this.row = row;
 	}

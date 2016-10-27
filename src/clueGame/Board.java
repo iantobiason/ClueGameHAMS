@@ -47,7 +47,7 @@ public class Board {
 	
 	private ArrayList<Card> deck;
 	
-	private Map<String,Player> cluePlayers;
+	private ArrayList<Player> cluePlayers;
 	
 	private Map<String,String> solution;
 
@@ -176,7 +176,7 @@ public class Board {
 	}
 
 	public void loadPeople() throws BadConfigFormatException {
-		cluePlayers = new HashMap<String, Player>();
+		cluePlayers = new ArrayList<Player>();
 		peopleCards = new HashSet<Card>();
 		Scanner peopleRead = null;
 		try {
@@ -189,7 +189,7 @@ public class Board {
 			String line = peopleRead.nextLine();
 			String[] fields = line.split(",");
 			Player tempPlayer = new Player(fields[0],fields[1],fields[2],fields[3]);
-			cluePlayers.put(fields[0], tempPlayer);
+			cluePlayers.add(tempPlayer);
 			Card tempCard = new Card(fields[0], CardType.PERSON);
 			peopleCards.add(tempCard);
 		}
@@ -453,7 +453,7 @@ public class Board {
 			}
 		}
 		j = 0;
-		for(Player p : cluePlayers.values()){
+		for(Player p : cluePlayers){
 			for (int i = 0; i < 3; i++) {
 				p.cardsInHand[i] = cardsForPlayers[j];
 				j++;
@@ -499,7 +499,7 @@ public class Board {
 		return board[r][c];
 	}
 
-	public Map<String, Player> getPeople() {
+	public ArrayList<Player> getPeople() {
 		return cluePlayers;
 	}
 	public Set<Card> getPlayerCards() {
@@ -527,13 +527,9 @@ public class Board {
 		return rooms;
 	}
 
-	public void handleSuggestion(Set<Card> suggestion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public ArrayList<Player> getPlayers() {
-		// TODO Auto-generated method stub
+	public Card handleSuggestion(int accuser, Set<Card> suggestion) {
 		return null;
 	}
+
+
 }

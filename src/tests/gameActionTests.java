@@ -167,7 +167,7 @@ public class gameActionTests {
 	
 	@Test
 	public void testHandleSuggestion(){
-		ArrayList<Player> players = board.getPlayers();
+		ArrayList<Player> players = board.getPeople();
 		
 		Player tempPlayer = players.get(0);
 		Card[] hand = {new Card("Chancelor Office", CardType.ROOM), new Card("King Crusader", CardType.PERSON),
@@ -216,7 +216,7 @@ public class gameActionTests {
 		suggestion.add(new Card("Military Base", CardType.ROOM));
 		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
-		board.handleSuggestion(suggestion);
+		assertNull(board.handleSuggestion(1, suggestion));
 		
 		//Suggestion only accusing player can disprove
 		//Accusor: Comp1 Cards: "Military Base", "Prosthetic Leg", "PartyGirl Primrose"
@@ -224,7 +224,7 @@ public class gameActionTests {
 		suggestion.add(new Card("Military Base", CardType.ROOM));
 		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		suggestion.add(new Card("PartyGirl Primrose", CardType.PERSON));
-		board.handleSuggestion(suggestion);
+		assertNull(board.handleSuggestion(1, suggestion));
 		
 		//Suggestion only human can disprove
 		//Accusor: Comp1 Cards: "Chancelor Office", "Prosthetic Leg", "NeckBeard Nikoli"
@@ -232,7 +232,7 @@ public class gameActionTests {
 		suggestion.add(new Card("Chancelor Office", CardType.ROOM));
 		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
-		board.handleSuggestion(suggestion);
+		assertEquals("Chancelor Office", board.handleSuggestion(1, suggestion).getName());
 		
 		//Suggestion only human can disprove but human is accuser
 		//Accusor: Human Cards: "Chancelor Office", "Prosthetic Leg", "NeckBeard Nikoli"
@@ -240,7 +240,7 @@ public class gameActionTests {
 		suggestion.add(new Card("Chancelor Office", CardType.ROOM));
 		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		suggestion.add(new Card("NeckBeard Nikoli", CardType.PERSON));
-		board.handleSuggestion(suggestion);
+		assertNull(board.handleSuggestion(0, suggestion));
 		
 		//Suggestion that two players can disprove but correct player does
 		//Accusor: Comp1 Cards: "Jedi Council Tower", "Prosthetic Leg", "Mountian Man"
@@ -248,7 +248,7 @@ public class gameActionTests {
 		suggestion.add(new Card("Jedi Council Tower", CardType.ROOM));
 		suggestion.add(new Card("Prosthetic Leg", CardType.WEAPON));
 		suggestion.add(new Card("Mountian Man", CardType.PERSON));
-		board.handleSuggestion(suggestion);
+		assertEquals("Mountian Man", board.handleSuggestion(1, suggestion).getName());
 		
 		//Suggestion that human and another player can disprove
 		//Accusor: Comp1 Cards: "Military Base", "Nike Sweatpants", "Sailor Samson"
@@ -256,7 +256,7 @@ public class gameActionTests {
 		suggestion.add(new Card("Military Base", CardType.ROOM));
 		suggestion.add(new Card("Nike Sweatpants", CardType.WEAPON));
 		suggestion.add(new Card("Sailor Samson", CardType.PERSON));
-		board.handleSuggestion(suggestion);
+		assertEquals("Sailor Samson", board.handleSuggestion(1, suggestion).getName());
 	}
 }
 	

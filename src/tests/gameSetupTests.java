@@ -23,10 +23,10 @@ public class gameSetupTests {
 	}
 	@Test
 	public void testLoadingThePeople(){
-		Map<String, Player> playerLegend = board.getPeople();
+		ArrayList<Player> playerLegend = board.getPeople();
 		assertEquals(6, playerLegend.size());
-		assertTrue(playerLegend.containsKey("King Crusader"));
-		assertTrue(playerLegend.containsKey("PartyGirl Primrose"));
+		assertEquals("King Crusader",playerLegend.get(0).getName());
+		assertEquals("PartyGirl Primrose",playerLegend.get(5).getName());
 	}
 	@Test
 	public void testLoadAndCreationOfDeck() {
@@ -53,13 +53,13 @@ public class gameSetupTests {
 		assertNotNull(solution.get("Weapon"));
 		
 		//Checks that each player has 3 cards
-		Map<String,Player> players = board.getPeople();
-		assertEquals(3, players.get("King Crusader").getCardsInHand().length);
-		assertEquals(3, players.get("Mountian Man").getCardsInHand().length);
-		assertEquals(3, players.get("Sailor Samson").getCardsInHand().length);
-		assertEquals(3, players.get("NeckBeard Nikoli").getCardsInHand().length);
-		assertEquals(3, players.get("WhiteNight").getCardsInHand().length);
-		assertEquals(3, players.get("PartyGirl Primrose").getCardsInHand().length);
+		ArrayList<Player> players = board.getPeople();
+		assertEquals(3, players.get(0).getCardsInHand().length);
+		assertEquals(3, players.get(1).getCardsInHand().length);
+		assertEquals(3, players.get(2).getCardsInHand().length);
+		assertEquals(3, players.get(3).getCardsInHand().length);
+		assertEquals(3, players.get(4).getCardsInHand().length);
+		assertEquals(3, players.get(5).getCardsInHand().length);
 	}
 	
 }
