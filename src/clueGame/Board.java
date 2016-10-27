@@ -518,9 +518,10 @@ public class Board {
 		return solution;
 	}
 
-	public void setSolution(String string, String string2, String string3) {
-		// TODO Auto-generated method stub
-		
+	public void setSolution(String room, String person, String weapon) {
+		solution.put("Room", room);
+		solution.put("Person", person);
+		solution.put("Weapon", weapon);
 	}
 	
 }

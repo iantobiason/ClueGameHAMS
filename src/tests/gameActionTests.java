@@ -53,13 +53,13 @@ public class gameActionTests {
 		Player testPlayer = new Player();
 		board.setSolution("Senate", "WhiteNight", "Katana");
 		//Correct Accusation
-		assertTrue(testPlayer.makeAccusation("Senate", "WhiteNight", "Katana"));
+		assertTrue(testPlayer.makeAccusation("Senate", "WhiteNight", "Katana", board));
 		//Room incorrect
-		assertFalse(testPlayer.makeAccusation("The Works", "WhiteNight", "Katana"));
+		assertFalse(testPlayer.makeAccusation("The Works", "WhiteNight", "Katana", board));
 		//Person incorrect
-		assertFalse(testPlayer.makeAccusation("Senate", "NeckBeard Nikoli", "Katana"));
+		assertFalse(testPlayer.makeAccusation("Senate", "NeckBeard Nikoli", "Katana", board));
 		//Weapon incorrect
-		assertFalse(testPlayer.makeAccusation("Senate", "WhiteNight", "Pickle Jar"));
+		assertFalse(testPlayer.makeAccusation("Senate", "WhiteNight", "Pickle Jar", board));
 	}
 	
 }

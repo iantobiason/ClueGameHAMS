@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.Map;
 
 public class Player {
 	private String playerName;
@@ -29,8 +30,10 @@ public class Player {
 	public Card [] getCardsInHand() {
 		return cardsInHand;
 	}
-	public boolean makeAccusation(String room, String person, String weapon) {
-		// TODO Auto-generated method stub
+	public boolean makeAccusation(String room, String person, String weapon, Board board) {
+		if(board.getSolution().get("Room").equals(room) && board.getSolution().get("Person").equals(person) && board.getSolution().get("Weapon").equals(weapon)){
+			return true;
+		}
 		return false;
 	}
 
